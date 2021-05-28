@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fddb53012e7ccf4d9b562720808c13f, type: 3}
+  m_Name: PlaceBlue
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7530650527248946678, guid: 46ebb33b62377414e88aea13fda1ee9e, type: 3}
+  PrimaryAxis: 1
+  PreferredAmount: 0
+  PreferredFalloff: -1
+  useCelestialDist: 1
+  MinDistToCelestial: 4
+  MaxDistToCelestial: 200
+  UseAmount: 0
+  MinAmount: 0
+  MaxAmount: 0
+  UseFalloff: 1
+  MinFalloff: -4
+  MaxFalloff: 10
+  DistanceAway: 0
