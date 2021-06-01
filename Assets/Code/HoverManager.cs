@@ -14,7 +14,7 @@ public class HoverManager : MonoBehaviour
     {
         var ray = CameraController.Cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
-        if (Physics.SphereCast(ray, 1f, out hit, rayDist, hoverMask))
+        if (Physics.Raycast(ray, out hit, rayDist, hoverMask))
             hovering.Update(hit.collider.gameObject.GetComponentInParent<Hoverable>());
         else
             hovering.Update(null);

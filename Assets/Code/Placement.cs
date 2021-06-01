@@ -38,16 +38,21 @@ public class Placement : ScriptableObject
 
     [FoldoutGroup("After Created")]
     public float DistanceAway = 0;
-    public IEnumerable<Cell> FilterCells(IEnumerable<Cell> cells) =>
-        cells.Where(cell => {
-            if (useCelestialDist && (cell.DistToCelestial < MinDistToCelestial || cell.DistToCelestial > MaxDistToCelestial))
-                return false;
-            if (UseAmount && (cell.Amount < MinAmount || cell.Amount > MaxAmount))
-                return false;
-            if (UseFalloff && (cell.Falloff < MinFalloff || cell.Falloff > MaxFalloff))
-                return false;
-            return true;
-        }); 
+    protected virtual bool CellIsValid(Cell cell)
+    {
+        if (useCelestialDist && (cell.DistToCelestial < MinDistToCelestial || cell.DistToCelestial > MaxDistToCelestial))
+            return false;
+        if (UseAmount && (cell.Amount < MinAmount || cell.Amount > MaxAmount))
+            return false;
+        if (UseFalloff && (cell.Falloff < MinFalloff || cell.Falloff > MaxFalloff))
+            return false;
+        return true;
+    }
+    public virtual IEnumerable<Cell> FilterCells(IEnumerable<Cell> cells) => cells.Where(CellIsValid);
+    public virtual void FinishedPlacing(Transform placedObj, Cell cell)
+    {
+
+    }
 }
 public enum SearchOn
 {

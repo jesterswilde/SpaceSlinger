@@ -2,6 +2,8 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -12,29 +14,74 @@ public class CameraController : MonoBehaviour
     Camera cam;
     public static Camera Cam => t.cam;
     public Camera Camera => t.cam;
-    [SerializeField]
-    Transform yPivot;
-    public Transform YPivot => yPivot;
-    [SerializeField]
-    Transform camOffset;
-    public Transform CamOffset => camOffset;
+    List<CameraSystem> activeSystems = new List<CameraSystem>();
     [SerializeField]
     CameraSystem curSystem;
-    CameraSystem defaultSystem; 
-    public static Vector3 NoYForward => t.transform.forward.NoY().normalized;
-    public static Vector3 NoYRight => t.transform.right.NoY().normalized;
-    public static Vector3 Forward => t.transform.forward;
-    public static Vector3 Right => t.transform.right;
+    CameraSystem prevSystem;
+    float transition = 0;
+    float transitionSpeed = 1f;
+    bool isTransitioning = false;
+    [SerializeField]
+    CameraSystem defaultSystem;
+    [SerializeField]
+    CameraSystem planetCam;
+    public static CameraSystem PlanetCam => t.planetCam;
+    public static Vector3 NoYForward => Cam.transform.forward.NoY().normalized;
+    public static Vector3 NoYRight => Cam.transform.right.NoY().normalized;
+    public static Vector3 Forward => Cam.transform.forward;
+    public static Vector3 Right => Cam.transform.right;
 
-    public static void LoadSystem(CameraSystem system)
+    void StartLerp(float lerpSpeed = 1f)
     {
-        t.curSystem?.Unmount(t);
-        t.curSystem = system == null ? t.defaultSystem : system;
+        t.isTransitioning = true;
+        t.transitionSpeed = lerpSpeed;
+        t.transition = 0f;
+    }
+    public static void LoadSystem(CameraSystem system, float lerpSpeed = 1f)
+    {
+        t.activeSystems.Add(system);
+        t.prevSystem = t.curSystem;
+        t.curSystem = system;
         t.curSystem?.Mount(t);
+        if (t.prevSystem != null)
+            t.StartLerp(lerpSpeed);
+    }
+    public static void UnloadSystem(CameraSystem system)
+    {
+        t.activeSystems.Remove(system);
+        if(t.curSystem == system)
+        {
+            t.prevSystem = system;
+            t.curSystem = t.activeSystems.Last();
+            t.StartLerp();
+        }
+    }
+    void Lerp()
+    {
+        transition = Mathf.Min(1, transition + Time.deltaTime * transitionSpeed);
+        Cam.transform.position = Vector3.Lerp(prevSystem.CamParent.position, curSystem.CamParent.position, transition);
+        Cam.transform.rotation = Quaternion.Slerp(prevSystem.CamParent.rotation, curSystem.CamParent.rotation, transition);
+        if(transition == 1)
+        {
+            isTransitioning = false;
+            prevSystem.Unmount(this);
+            prevSystem = null;
+        }
+        Debug.Log("Is lerping");
+    }
+    void SystemControlsCam()
+    {
+        Cam.transform.position = curSystem.CamParent.transform.position;
+        Cam.transform.rotation = curSystem.CamParent.rotation; 
     }
     private void LateUpdate()
     {
         curSystem?.ControlCamera(this);
+        if (isTransitioning)
+            Lerp();
+        else
+            SystemControlsCam();
+        camDist.Update(Vector3.Distance(Cam.transform.position, Player.Transform.position));
     }
     private void Awake()
     {
@@ -42,7 +89,9 @@ public class CameraController : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        defaultSystem = GetComponentInChildren<BasicCamera>();
+    }
+    private void Start()
+    {
         LoadSystem(defaultSystem);
     }
 }

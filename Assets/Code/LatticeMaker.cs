@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +8,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class LatticeMaker : MonoBehaviour
 {
+    static LatticeMaker t; 
     [SerializeField, Range(0f, 1f)]
     float percentStay;
     [SerializeField]
@@ -21,6 +23,7 @@ public class LatticeMaker : MonoBehaviour
     bool shouldCreateOrbs = true;
     [SerializeField]
     List<PointData> points = new List<PointData>();
+    bool updateQueued = false;
 
     private void OnDrawGizmosSelected()
     {
@@ -60,6 +63,24 @@ public class LatticeMaker : MonoBehaviour
     {
         UpdatePoints(basisVectors);
     }
+    public static Int3 GetBasisVector(int index) => t.basisVectors[index];
+
+    internal static void UpdateBasis(int associatedVector, Vector3 normalized, float magnitude)
+    {
+        if (t == null)
+            return;
+        t.basisVectors[associatedVector] = Int3.FromVector(normalized * magnitude);
+        if (!t.updateQueued)
+        {
+            t.updateQueued = true;
+            Callback.Create(() =>
+            {
+                t.UpdatePoints(t.basisVectors);
+                t.updateQueued = false;
+            }, 1f);
+        }
+    }
+
     void UpdatePoints(List<Int3> basisVectors)=>
         points?.ForEach(point => point.UpdateBasis(basisVectors));
 
@@ -78,5 +99,9 @@ public class LatticeMaker : MonoBehaviour
         }
         GridManager.Setup(points);
         Generator.PlaceThings();
+    }
+    private void Awake()
+    {
+        t = this;
     }
 }

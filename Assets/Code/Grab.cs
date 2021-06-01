@@ -7,20 +7,48 @@ public class Grab : Equipment
     LayerMask mask;
     [SerializeField]
     Interactable.Functionality interactsWith;
-    IGrabbable grabbedThing;
-    public IGrabbable GrabbedThing => grabbedThing;
+    public IGrabbable GrabbedThing { get; private set; }
+    GrabMotion motion;
+    bool isConnected => GrabbedThing != null;
 
     void Fire()
     {
+        Debug.Log("Firing");
         var ray = new Ray(Player.ProjectilePosition, Player.ProjectileDirection);
         if(Physics.Raycast(ray, out RaycastHit hit, hoverRange, mask)){
-            var grabbable = hit.collider.gameObject.GetComponentsInChildren<Interactable>()
+            var inter = hit.collider.gameObject.GetComponentInParent<Interactable>();
+            var grabbable = hit.collider.gameObject.GetComponentsInParent<Interactable>()
                 .Where(inter => interactsWith.Contains(inter.Functionalities) && inter is IGrabbable).FirstOrDefault() as IGrabbable;
+            Debug.Log($"Hit {inter?.name ?? "Nothing"}");
             if(grabbable != null)
             {
-                grabbedThing = grabbable;
-                Player.EquipmentConnected(this);
+                Debug.Log($"Hit {grabbable.name}");
+                var dist = Vector3.Distance(Player.Transform.position, grabbable.transform.position);
+                if(dist < grabbable.UsableDistance)
+                {
+                    Debug.Log("In Range");
+                    GrabbedThing = grabbable;
+                    motion.HoldOnto(this);
+                    Player.EquipmentConnected(this, motion);
+                }
             }
         }
-    }    
+    }
+    void Disconnect()
+    {
+        GrabbedThing.Disconnect();
+        GrabbedThing = null;
+        Player.EventHappened(PlayerEvents.Disconnected);
+    }
+    public override void Activate()
+    {
+        if (!isConnected)
+            Fire();
+        else
+            Disconnect();
+    }
+    private void Awake()
+    {
+        motion = GetComponentInChildren<GrabMotion>();
+    }
 }

@@ -13,6 +13,8 @@ public class Detector : SerializedMonoBehaviour
     HashSet<Collider> colls = new HashSet<Collider>();
     [SerializeField]
     UnityEvent OnEnter;
+    [SerializeField]
+    UnityEvent OnExit;
     [ShowInInspector]
     public bool IsBlocked => colls.Count > 0;
 
@@ -28,6 +30,8 @@ public class Detector : SerializedMonoBehaviour
     {
         if (mask.ContainsGameObject(other.gameObject))
             colls.Remove(other);
+        if (colls.Count == 0)
+            OnExit?.Invoke();
     }
 
 }

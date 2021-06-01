@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class SwingMotion : PlayerMotion
+public class ConnectorMotion : PlayerMotion
 {
     [SerializeField]
     float speedIncrease;
@@ -26,11 +26,13 @@ public class SwingMotion : PlayerMotion
         get => player.transform.position;
         set => player.transform.position = value;
     }
+    internal void Connected(Connector _connector)
+    {
+        connector = _connector;
+    }
     internal override void Begin(Player _player)
     {
         base.Begin(_player);
-        //player.Rigid.velocity = Vector3.zero;
-        connector = player.ConnectedEquipment as Connector;
         connectionLength = Mathf.Max(Vector3.Distance(playerPos, orbPos), minLength);
     }
     internal override void Run(float deltaTime)
@@ -66,6 +68,8 @@ public class SwingMotion : PlayerMotion
         }
         player.transform.rotation = Quaternion.LookRotation(player.transform.forward, Orientation.Up);
     }
+
+
     void LerpToOrientation(float deltaTime)
     {
         var lerpTo = Quaternion.LookRotation(transform.forward, Orientation.Up);

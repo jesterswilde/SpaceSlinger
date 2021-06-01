@@ -7,6 +7,7 @@ public class Gravity : SerializedMonoBehaviour
 {
     static Gravity t;
     Planet orientingPlanet;
+    public static Planet OrientingPlanet => t.orientingPlanet;
     [SerializeField]
     Vector3 orientation => Orientation;
     [SerializeField]
@@ -16,9 +17,9 @@ public class Gravity : SerializedMonoBehaviour
     List<float> influence;
 
     public static Vector3 Orientation { get {
-            if (t.orientingPlanet != null)
+            if (t.orientingPlanet != null && t.orientingPlanet.Influence >= 1f)
                 return (t.orientingPlanet.transform.position - Player.Transform.position).normalized;
-            return Vector3.down;
+            return AmbientGravity.normalized;
         } }
     [SerializeField]
     List<Planet> planets = new List<Planet>();

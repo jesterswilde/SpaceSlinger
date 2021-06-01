@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class Interactable : MonoBehaviour 
+public class Interactable : SerializedMonoBehaviour 
 {
 
     [SerializeField]

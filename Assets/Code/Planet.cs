@@ -29,9 +29,16 @@ public class Planet : SerializedMonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, innerRaidus);
     }
+    public void LandedOnPlanet()
+    {
+        CameraController.LoadSystem(CameraController.PlanetCam);
+    }
+    public void DepartedPlanet()
+    {
+        CameraController.UnloadSystem(CameraController.PlanetCam);
+    }
     private void Update()
     {
-        influence = Influence;
         isAffectingPlayer.Update(outerRing.IsBlocked);
         if (isAffectingPlayer.Changed)
         {

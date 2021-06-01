@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5232075686663030141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.53, y: 12.3, z: -8}
-  m_LocalScale: {x: 3.3358, y: 3.3358, z: 3.3358}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c34522ceae4b0ca48b4f12ba07b78900, type: 2}
+  - {fileID: 2100000, guid: 9205f11a985c03e4e8c0c9c88984bf92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +110,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b3e529f8597194780831e5026ef996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMat: {fileID: 2100000, guid: c34522ceae4b0ca48b4f12ba07b78900, type: 2}
-  higlightMat: {fileID: 2100000, guid: 6f7a73eee17a27a4c825338115197c9b, type: 2}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOver:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  hoverMat: {fileID: 2100000, guid: 6f7a73eee17a27a4c825338115197c9b, type: 2}
 --- !u!114 &3605579504653354854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1292f9a1220922547a86180471c61e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   functionalities: 1

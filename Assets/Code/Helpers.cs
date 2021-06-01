@@ -1,10 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Helpers
 {
+    public static List<T> CollectNeighborhood<T>(Func<int, int, T> evaluator, int range = 1)
+    {
+        var result = new List<T>();
+        for(int x = -range; x <= range; x++)
+            for(int y = -range; y <= range; y++)
+                if (x != 0 || y != 0)
+                    result.Add(evaluator(x, y));
+        return result;
+    }public static List<T> CollectNeighborhood<T>(Func<int, int, int, T> evaluator, int range = 1)
+    {
+        var result = new List<T>();
+        for(int x = -range; x <= range; x++)
+            for(int y = -range; y <= range; y++)
+                for(int z = -range; z <= range; z++)
+                if (x != 0 || y != 0 || z != 0)
+                        result.Add(evaluator(x, y, z));
+        return result;
+    }
+    public static void ForNeighborhood(Action<int, int> evaluator, int range = 1)
+    {
+        for(int x = -range; x <= range; x++)
+            for(int y = -range; y <= range; y++)
+                if (x != 0 || y != 0)
+                    evaluator(x, y);
+    }
+    public static void ForNeighborhood(Action<int, int, int> evaluator, int range = 1)
+    {
+        for(int x = -range; x <= range; x++)
+            for(int y = -range; y <= range; y++)
+                for(int z = -range; z <= range; z++)
+                    if (x != 0 || y != 0 || z != 0)
+                        evaluator(x, y, z);
+    }
     public static (List<T> matching, List<T> unmatching) Split<T>(this List<T> list, Func<T,int,bool> IsMatching)
     {
         var matching = new List<T>();
@@ -76,23 +110,42 @@ public static class Helpers
         set.Add(val);
         return true;
     }
-    public static T MinBy<T,V>(this List<T> list, Func<T,V> comparer) where V : IComparable<V>
+    public static T MinBy<T,V>(this IEnumerable<T> list, Func<T,V> comparer) where V : IComparable<V>
     {
-        if (list.Count == 0)
+        if (list.Count() == 0)
             return default;
-        if (list.Count == 1)
-            return list[0];
-        int index = 1;
-        V val = comparer(list[0]);
-        for(int i = 1; i < list.Count; i++)
+        if (list.Count() == 1)
+            return list.First();
+        T item = list.First();
+        V val = comparer(item);
+        foreach(var el in list)
         {
-            var result = comparer(list[i]);
+            var result = comparer(el);
             if(result.CompareTo(val) < 0)
             {
                 val = result;
-                index = i;
+                item = el;
             }
         }
-        return list[index];
+        return item;
+    }
+    public static T MaxBy<T,V>(this IEnumerable<T> list, Func<T,V> comparer) where V : IComparable<V>
+    {
+        if (list.Count() == 0)
+            return default;
+        if (list.Count() == 1)
+            return list.First();
+        T item = list.First();
+        V val = comparer(item);
+        foreach(var el in list)
+        {
+            var result = comparer(el);
+            if(result.CompareTo(val) > 0)
+            {
+                val = result;
+                item = el;
+            }
+        }
+        return item;
     }
 }

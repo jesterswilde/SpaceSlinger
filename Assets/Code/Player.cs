@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -34,6 +35,15 @@ public class Player : SerializedMonoBehaviour
     public Equipment PrimaryEquipment { get; private set; }
     [SerializeField]
     public Equipment SecondaryEquipment { get; private set; }
+    public static List<Equipment> GetEquipment()
+    {
+        var equip = new List<Equipment>();
+        if(T.PrimaryEquipment != null)
+            equip.Add(T.PrimaryEquipment);
+        if(T.SecondaryEquipment != null)
+            equip.Add(T.SecondaryEquipment);
+        return equip;
+    }
     public static float HoverDist => T.PrimaryEquipment?.HoverRange ?? 0;
     public static Vector3 ProjectilePosition { get
         {
@@ -59,10 +69,14 @@ public class Player : SerializedMonoBehaviour
     }
 
 
-    public static void EquipmentConnected(Equipment equip)
+    public static void EquipmentConnected(Equipment equip, PlayerMotion motion)
     {
         T.ConnectedEquipment = equip;
         EventHappened(PlayerEvents.Connected);
+        T.motion?.End();
+        T.motion = motion;
+        motion.Begin(T);
+        T.currentMode = motion.Mode;
     }
     public static void EventHappened(PlayerEvents e) =>  PEvent?.Invoke(e);
 
@@ -133,6 +147,7 @@ public enum PlayerMode
     Swing,
     Unchanged,
     NoControl,
+    HoldingOnto,
 }
 public enum PlayerEvents
 {

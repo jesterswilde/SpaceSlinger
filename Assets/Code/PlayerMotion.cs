@@ -39,7 +39,6 @@ public class PlayerMotion : SerializedMonoBehaviour
     {
         PlayerEvents.Liftoff => PlayerMode.InAir,
         PlayerEvents.Landed => PlayerMode.Run,
-        PlayerEvents.Connected => player.ConnectedEquipment.AssociatedMode,
         PlayerEvents.Disconnected => player.IsOnGround switch
         {
             true => PlayerMode.Run,

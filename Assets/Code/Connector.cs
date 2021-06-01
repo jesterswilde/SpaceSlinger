@@ -28,6 +28,7 @@ public class Connector : Equipment
     Material travelingLineMat;
     [SerializeField]
     int numMiddlePoints;
+    ConnectorMotion motion;
     [ShowInInspector]
     public bool IsConnected => Target != null;
 
@@ -57,7 +58,8 @@ public class Connector : Equipment
         From = Player.Transform;
         To = activeHook.transform;
         line.material = hookedLineMat;
-        Player.EquipmentConnected(this);
+        motion.Connected(this);
+        Player.EquipmentConnected(this, motion);
     }
     public void Disconnect()
     {
@@ -93,5 +95,9 @@ public class Connector : Equipment
     private void Update()
     {
         UpdateLineAndHook();
+    }
+    private void Awake()
+    {
+        motion = GetComponentInChildren<ConnectorMotion>();
     }
 }

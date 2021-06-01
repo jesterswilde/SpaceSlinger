@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraSystem : MonoBehaviour
 {
+    [SerializeField]
+    Transform camParent;
+    public Transform CamParent => camParent;
     public virtual void ControlCamera(CameraController controller)
     {
 
@@ -17,11 +20,3 @@ public class CameraSystem : MonoBehaviour
 
     }
 }
-
-public class LandmarkCamera : CameraSystem
-{
-    [SerializeField]
-    Transform target;
-    float preferredDist = 30f; 
-}
-

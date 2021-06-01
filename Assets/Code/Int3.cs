@@ -16,6 +16,8 @@ public struct Int3
     public static Int3 operator +(Int3 a, Int3 b) => new Int3() { X = a.X + b.X, Y = a.Y + b.Y, Z = a.Z + b.Z };
     public static Int3 operator /(Int3 a, int b) => new Int3() { X = a.X / b, Y = a.Y / b, Z = a.Z / b };
     public static Int3 operator *(Int3 a, int b) => new Int3() { X = a.X * b, Y = a.Y * b, Z = a.Z * b };
+    public static bool operator ==(Int3 a, Int3 b) => a.Equals(b);
+    public static bool operator !=(Int3 a, Int3 b) => !a.Equals(b);
     public Int3 AddX(int val) => new Int3() { X = X + val, Y = Y, Z = Z };
     public Int3 AddY(int val) => new Int3() { X = X, Y = Y + val, Z = Z };
     public Int3 AddZ(int val) => new Int3() { X = X, Y = Y, Z = Z + val };

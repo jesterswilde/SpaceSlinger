@@ -5,6 +5,10 @@ public class BasicCamera : CameraSystem
 {
     [SerializeField]
     Transform target;
+    Transform Target { get {
+            target ??= Player.Transform;
+            return target;
+        } }
     [SerializeField]
     float rotSpeed = 10f;
     [SerializeField]
@@ -16,6 +20,10 @@ public class BasicCamera : CameraSystem
     bool shouldLerp = true;
     [SerializeField]
     LayerMask clipMask;
+    [SerializeField]
+    Transform camOffset;
+    [SerializeField]
+    Transform yPivot;
     [SerializeField, FoldoutGroup("Lerp")]
     float lerpVelocity;
     [SerializeField, FoldoutGroup("Lerp")]
@@ -23,7 +31,7 @@ public class BasicCamera : CameraSystem
     float maxCamDist = 20;
     public override void ControlCamera(CameraController controller)
     {
-        transform.position = target.position;
+        transform.position = Target.position;
         PlayerControl(controller);
         ControlCameraDist(controller);
         LerpToOrientation(controller);
@@ -34,11 +42,11 @@ public class BasicCamera : CameraSystem
         var xChange = Input.GetAxisRaw("Mouse X");
         var yChange = Input.GetAxisRaw("Mouse Y");
         transform.Rotate(Vector3.up * rotSpeed * xChange);
-        controller.YPivot.Rotate(Vector3.right * rotSpeed * yChange * -1);
+        yPivot.Rotate(Vector3.right * rotSpeed * yChange * -1);
     }
     void ControlCameraDist(CameraController controller)
     {
-        var ray = new Ray(transform.position, controller.CamOffset.position - transform.position);
+        var ray = new Ray(transform.position, camOffset.position - transform.position);
         float dist;
         if (Physics.Raycast(ray, out RaycastHit hit, maxCamDist + 2, clipMask))
         {
@@ -46,18 +54,16 @@ public class BasicCamera : CameraSystem
         }
         else
         {
-            dist = Vector3.Distance(transform.position, controller.CamOffset.position);
+            dist = Vector3.Distance(transform.position, camOffset.position);
             dist = Mathf.Min(maxCamDist, dist + relaxMaxdist * Time.deltaTime);
         }
-        controller.CamOffset.position = controller.CamOffset.transform.forward * dist * -1 + transform.position;
+        camOffset.position = camOffset.transform.forward * dist * -1 + transform.position;
         CameraController.CamDist.Update(dist);
     }
     void LerpToOrientation(CameraController controller)
     {
         if (!shouldLerp)
             return;
-        var lerpTo = Quaternion.LookRotation(transform.forward, Orientation.Up);
-        controller.transform.rotation = Quaternion.Lerp(transform.rotation, lerpTo, lerpVelocity * Time.deltaTime); 
     }
     public override void Mount(CameraController controller)
     {

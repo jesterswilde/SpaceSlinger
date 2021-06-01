@@ -41,18 +41,9 @@ public class RunningMotion : PlayerMotion
     {
         FaceForward();
         if (isMoving)
-        {
             velocity = (rightInput * Vector3.right + forwardInput * Vector3.forward).normalized * acceleration;
-            //player.Rigid.AddForce((forwardInput * Orientation.Forward + rightInput * Orientation.Right).normalized * acceleration, ForceMode.Acceleration); 
-            //if (velocity.magnitude > maxSpeed)
-            //    velocity = velocity.normalized * maxSpeed;
-        }
         else
-        {
             velocity = Vector3.zero;
-            //float vertAmount = Mathf.Max(0, Vector3.Dot(orientation.up, velocity));
-            //velocity = vertAmount * velocity.magnitude * orientation.up;
-        }
         if (isReadyToJump.Value)
             curJumpForce = Mathf.Min(curJumpForce + deltaTime * jumpForcePerSec, maxJumpForce);
         player.transform.position += (velocity.x * Orientation.Right + velocity.z * Orientation.Forward) * deltaTime;

@@ -73,6 +73,6 @@ public class PointData
         for (int i = 0; i < basisVectors.Count; i++)
             newCoord += basisVectors[i] * VectorCount[i];
         Coord = newCoord;
-        Callback.Create(() => Lerper.MoveToAbsolute(Transform.gameObject, Coord.ToVector()), 1f);
+        Callback.Create(() => Lerper.MoveToAbsolute(Transform.gameObject, Coord.ToVector(), speed: UnityEngine.Random.Range(.05f, .4f)), UnityEngine.Random.Range(1f, 3f));
     }
 }

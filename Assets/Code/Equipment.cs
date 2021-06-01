@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class Equipment : SerializedMonoBehaviour
 {
-    [SerializeField, Range(1, 2)]
-    int slots;
-    public int Slots => slots;
     [SerializeField]
     protected float hoverRange = 50f;
     public float HoverRange => hoverRange;
-    [SerializeField]
-    public PlayerMode AssociatedMode { get; private set; }
-
+    public virtual bool ShouldHighlight(Hoverable hoverable) => Vector3.Distance(hoverable.transform.position, Player.Transform.position) < hoverRange;
     public virtual void Activate() { }
     public virtual void ActivateSecondary() { }
     public virtual void Equip() { }

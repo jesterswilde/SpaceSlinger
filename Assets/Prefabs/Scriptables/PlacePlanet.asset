@@ -9,20 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fddb53012e7ccf4d9b562720808c13f, type: 3}
-  m_Name: PlaceBlue
+  m_Script: {fileID: 11500000, guid: 75ae63b187042b64bb0b37b3b8190e7a, type: 3}
+  m_Name: PlacePlanet
   m_EditorClassIdentifier: 
   prefab: {fileID: 7530650527248946678, guid: 46ebb33b62377414e88aea13fda1ee9e, type: 3}
   PrimaryAxis: 1
   PreferredAmount: 0
-  PreferredFalloff: -1
+  PreferredFalloff: 0
   useCelestialDist: 1
   MinDistToCelestial: 4
   MaxDistToCelestial: 200
   UseAmount: 0
   MinAmount: 0
-  MaxAmount: 0
-  UseFalloff: 1
-  MinFalloff: -4
-  MaxFalloff: 10
+  MaxAmount: 1000
+  UseFalloff: 0
+  MinFalloff: -100
+  MaxFalloff: 1000
   DistanceAway: 0
+  surfaceObjs:
+  - Prefab: {fileID: 3927059299891199277, guid: fe0eb5f7a7ea5e44f9a62f60fea52f90, type: 3}
+    placeFacing: 0
+    angleFrom: 3
+  childPlacements: []
+  distFromCenter: 25

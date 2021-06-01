@@ -14,6 +14,7 @@ public class Callback : MonoBehaviour
     static int curID = 0;
     static List<CB> updateCallbacks = new List<CB>();
     static List<CB> fixedUpdateCallbacks = new List<CB>();
+
     void Update()
     {
         updateCallbacks = Process(Time.deltaTime, updateCallbacks);
