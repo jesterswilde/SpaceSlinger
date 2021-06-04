@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetManager : MonoBehaviour
 {
+    static ResetManager t;
     [SerializeField]
     int maxRemoteness;
     [SerializeField]
     int dropRemoteness;
-    Vector3 checkPointPos;
+    [SerializeField]
+    float dropSpeed = 5;
+    Checkpoint activeCheckpoing;
+    Vector3 playerStartingPos;
+    Vector3 checkPointPos => activeCheckpoing?.transform.position ?? playerStartingPos;
 
     void CheckForDrop(Cell curCell, Cell prevCell)
     {
@@ -19,11 +25,23 @@ public class ResetManager : MonoBehaviour
             var cellPos = GridManager.GetPositionInCell(cell);
             float dist = Vector3.Distance(checkPointPos, cellPos);
             Player.Transform.position = checkPointPos + Gravity.AmbientGravity.normalized * -1 * dist;
-            Player.T.Rigid.velocity = Vector3.zero;
+            Player.T.Rigid.velocity = Gravity.AmbientGravity * dropSpeed;
         }
     }
+
+    internal static void SetActiveCheckpoint(Checkpoint checkpoint)
+    {
+        t.activeCheckpoing?.SetAsInactive();
+        t.activeCheckpoing = checkpoint;
+    }
+
     private void Start()
     {
         GridManager.PlayerCell.OnChange += CheckForDrop;
+        playerStartingPos = Player.T.transform.position;
+    }
+    private void Awake()
+    {
+        t = this;
     }
 }

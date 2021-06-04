@@ -11,11 +11,11 @@ public class Detector : SerializedMonoBehaviour
     LayerMask mask;
     [SerializeField]
     HashSet<Collider> colls = new HashSet<Collider>();
-    [SerializeField]
+    [SerializeField, FoldoutGroup("Events")]
     UnityEvent OnEnter;
-    [SerializeField]
+    [SerializeField, FoldoutGroup("Events")]
     UnityEvent OnExit;
-    [ShowInInspector]
+    [ShowInInspector, FoldoutGroup("Events")]
     public bool IsBlocked => colls.Count > 0;
 
     private void OnTriggerEnter(Collider other)
