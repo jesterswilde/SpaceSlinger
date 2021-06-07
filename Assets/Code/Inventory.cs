@@ -6,13 +6,12 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public event Action<Item> OnItemAdded;
-    List<Item> heldItems = new List<Item>();
-    public List<Item> HeldItems => heldItems;
+    public List<Item> HeldItems { get; } = new List<Item>();
 
 
     internal void AddItem(Item item)
     {
-        heldItems.Add(item);
+        HeldItems.Add(item);
         OnItemAdded.Invoke(item);
     }
 }

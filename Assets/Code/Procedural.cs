@@ -14,7 +14,9 @@ public static partial class Procedural
         if (placeInfo.DistanceAway > 0)
             pos += GetDirAway(targetCell) * placeInfo.DistanceAway;
         GridManager.AddCelestialToCell(targetCell);
-        var placedThing = GameObject.Instantiate(placeInfo.prefab);
+        Debug.Log($"Info {placeInfo}");
+        Debug.Log($"Prefab {placeInfo.Prefab}");
+        var placedThing = UnityEngine.Object.Instantiate(placeInfo.Prefab);
         placedThing.transform.position = pos;
         placedThing.PlacedInCell = targetCell;
         PlaceRelated(placeInfo, targetCell, placedThing.transform);
@@ -44,8 +46,9 @@ public static partial class Procedural
         }).normalized;
     static Cell PickCell(Placement info, CellFilter filter = null) => info.PrimaryAxis switch
     {
-        SearchOn.Amount => PickCellBy(info.PreferredAmount, filter ?? info.FilterCells, GridManager.CellsByAmount),
-        SearchOn.Falloff => PickCellBy(info.PreferredFalloff, filter ?? info.FilterCells, GridManager.CellsByFalloff),
+        SearchOn.Amount => PickCellBy(info.PreferredAxisVal, filter ?? info.FilterCells, GridManager.CellsByAmount),
+        SearchOn.Falloff => PickCellBy(info.PreferredAxisVal, filter ?? info.FilterCells, GridManager.CellsByFalloff),
+        SearchOn.DistFromOrigin => PickCellBy(info.PreferredAxisVal, filter ?? info.FilterCells, GridManager.CellsByDist),
         _ => throw new NotImplementedException()
     };
     static Cell PickCellBy(int targetValue, CellFilter filter, SparseList2D<Cell> list)

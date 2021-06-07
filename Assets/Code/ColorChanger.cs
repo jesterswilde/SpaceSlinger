@@ -3,30 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Sirenix.Utilities;
+using Sirenix.OdinInspector;
 
 public class ColorChanger : MonoBehaviour
 {
     [SerializeField]
-    float lerpSpeed;
+    float baseLerpSpeed;
+    float? externalLerpSpeed;
+    float lerpSpeed => externalLerpSpeed.HasValue ? externalLerpSpeed.Value : baseLerpSpeed;
+    [ShowInInspector]
     float lerpPos = 0;
     bool shouldLerp => lerpPos > 0;
     List<Renderer> rends;
     List<Color> baseColors;
     List<Color> targetColors;
     List<Color> startingColors;
-    internal void ChangeColor(Color color)
+    internal void ChangeColor(Color color, bool shouldLerp = true, float? duration = null)
     {
-        ChangeColor(rends.Select(_ => color).ToList()); 
+        ChangeColor(rends.Select(_ => color).ToList(), shouldLerp, duration); 
     }
-    internal void ChangeColor(List<Color> colors)
+    internal void ChangeColor(List<Color> colors, bool shouldLerp = true, float? duration = null)
     {
-        startingColors = rends.Select(rend => rend.material.color).ToList();
-        targetColors = colors;
-        lerpPos = 1f;
+        externalLerpSpeed = duration;
+        if (shouldLerp)
+        {
+            startingColors = rends.Select(rend => rend.material.color).ToList();
+            targetColors = colors;
+            lerpPos = 1f;
+        }
+        else
+            rends.ForEach((rend, i) => rend.material.color = colors[i]);
     }
-    internal void ChangeToBaseColor()
+    internal void ChangeToBaseColor(bool shouldLerp = true, float? duration = null)
     {
-        ChangeColor(baseColors.ToList());
+        ChangeColor(baseColors.ToList(), shouldLerp, duration);
     }
     void LerpColor()
     {

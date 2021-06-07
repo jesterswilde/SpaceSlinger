@@ -44,4 +44,11 @@ public struct Int3
         result.Add(AddZ(1));
         return result;
     }
+    public static int DistanceSqrd(Int3 a, Int3 b)
+    {
+        var x = (a.X - b.X) * (a.X - b.X);
+        var y = (a.Y - b.Y) * (a.Y - b.Y);
+        var z = (a.Z - b.Z) * (a.Z - b.Z);
+        return x + y + z;
+    }
 }

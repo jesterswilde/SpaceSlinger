@@ -30,6 +30,8 @@ public class Player : SerializedMonoBehaviour
     float hideDist;
     Delta<bool> isGrounded = new Delta<bool>() { Previous = false, Value = false };
     public bool IsOnGround => groundDetector.IsBlocked;
+
+    public PVisuals Visuals { get; private set; }
     public Equipment ConnectedEquipment { get; private set; }
     [SerializeField]
     public Equipment PrimaryEquipment { get; private set; }
@@ -136,8 +138,8 @@ public class Player : SerializedMonoBehaviour
         rends = GetComponentsInChildren<Renderer>().ToList();
         ChangeMode(currentMode);
         PrimaryEquipment?.Equip();
+        Visuals = GetComponent<PVisuals>();
     }
-
 }
 
 public enum PlayerMode

@@ -52,7 +52,6 @@ public class BasisVectorContraption : SerializedMonoBehaviour
     }
     void SetupCogs()
     {
-        return;
         var vec = LatticeMaker.GetBasisVector(associatedVector).ToVector();
         var normal = vec.normalized;
         magnitude = vec.magnitude;

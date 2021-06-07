@@ -121,6 +121,8 @@
     <Compile Include="Assets\Code\Placement.cs" />
     <Compile Include="Assets\Code\UI.cs" />
     <Compile Include="Assets\Code\ColorChanger.cs" />
+    <Compile Include="Assets\Code\PVisuals.cs" />
+    <Compile Include="Assets\Code\ValidateCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Code\Fresnel.shader" />

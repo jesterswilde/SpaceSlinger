@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Apple.TV;
 using Vector3 = UnityEngine.Vector3;
 
 public partial class GridManager : SerializedMonoBehaviour
@@ -27,8 +26,14 @@ public partial class GridManager : SerializedMonoBehaviour
     [SerializeField]
     SparseList2D<Cell> cellsByFalloff = new SparseList2D<Cell>();
     public static SparseList2D<Cell> CellsByFalloff => t.cellsByFalloff;
+    [SerializeField]
+    SparseList2D<Cell> cellsByDist = new SparseList2D<Cell>();
+    public static SparseList2D<Cell> CellsByDist => t.cellsByDist;
+    Int3 startingPoint = new Int3() { X = 0, Y = 0, Z = 0 };
+    public static Int3 StartingCoord => t.startingPoint;
     int largestCellDensity = 0;
 
+    #region DebugProperties
     [SerializeField, FoldoutGroup("Debug")]
     bool drawFalloff = false;
     [SerializeField, FoldoutGroup("Debug")]
@@ -46,6 +51,7 @@ public partial class GridManager : SerializedMonoBehaviour
     {
         Debug.Log($"{knownCells[debugCoord]}");
     }
+    #endregion
 
     public static void Setup(List<PointData> points)
     {
@@ -120,8 +126,9 @@ public class Cell
 {
     public int Amount;
     public int Falloff;
-    public Int3 Coord;
+    public int DistToOriginSqrd;
     public int DistToCelestial = 100;
     public int Remoteness = 0;
+    public Int3 Coord;
     public override string ToString() => $"Cell {{ Amount: {Amount} Falloff:{Falloff} Coord: {Coord} Remoteness: {Remoteness} DistToCelest:{DistToCelestial} }}";
 }

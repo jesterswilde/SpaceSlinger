@@ -424,6 +424,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &796591140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2628762330398015178, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+  m_PrefabInstance: {fileID: 2628762330313385421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &796591144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796591140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ab454b682f78947b6f415397ed3d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &796591145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796591140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc7b231cfcb33c4d94cfffe2ce4931f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseLerpSpeed: 1
 --- !u!114 &910649874 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
@@ -921,9 +951,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2628762329270463427, guid: 4b24ee17644c266498254a2f96643034, type: 3}
     - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      propertyPath: cooldownDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      propertyPath: onCooldownColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      propertyPath: onCooldownColor.b
+      value: 0.05345905
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      propertyPath: onCooldownColor.g
+      value: 0.05345905
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      propertyPath: onCooldownColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2628762329403127908, guid: 4b24ee17644c266498254a2f96643034, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2628762330133337111, guid: 4b24ee17644c266498254a2f96643034, type: 3}
       propertyPath: serializationData.Prefab
       value: 

@@ -1,61 +1,62 @@
 ﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Placement", menuName = "Scriptables/Placement", order = 1)]
-public class Placement : ScriptableObject
+public class Placement : SerializedScriptableObject
 {
-    public Placeable prefab;
+    [SerializeField]
+    Placeable prefab;
+    public Placeable Prefab => prefab;
     [FoldoutGroup("Initial Placement")]
     public SearchOn PrimaryAxis;
-    [ShowIf("PrimaryAxis", SearchOn.Amount), FoldoutGroup("Initial Placement")]
-    public int PreferredAmount;
-    [ShowIf("PrimaryAxis",  SearchOn.Falloff), FoldoutGroup("Initial Placement")]
-    public int PreferredFalloff;
-
     [FoldoutGroup("Initial Placement")]
-    public bool useCelestialDist = false;
-    [ShowIf("useCelestialDist"), FoldoutGroup("Initial Placement")]
-    public int MinDistToCelestial = 0;
-    [ShowIf("useCelestialDist"), FoldoutGroup("Initial Placement")]
-    public int MaxDistToCelestial = 200;
+    public int PreferredAxisVal;
+    [SerializeField, FoldoutGroup("Initial Placement")]
+    float distAway = 0;
+    public float DistanceAway => distAway;
 
-    [FoldoutGroup("Initial Placement")]
-    public bool UseAmount;
-    [ShowIf("UseAmount"), FoldoutGroup("Initial Placement")]
-    public float MinAmount = 0;
-    [ShowIf("UseAmount"), FoldoutGroup("Initial Placement")]
-    public float MaxAmount = 1000;
+    [SerializeField, PropertyOrder(0), FoldoutGroup("Criteria")]
+    Criteria criteria;
 
-    [FoldoutGroup("Initial Placement")]
-    public bool UseFalloff;
-    [ShowIf("UseFalloff"), FoldoutGroup("Initial Placement")]
-    public float MinFalloff = -100;
-    [ShowIf("UseFalloff"), FoldoutGroup("Initial Placement")]
-    public float MaxFalloff = 1000;
 
-    [FoldoutGroup("After Created")]
-    public float DistanceAway = 0;
-    protected virtual bool CellIsValid(Cell cell)
+    [SerializeField, PropertyOrder(1), FoldoutGroup("Criteria")]
+    List<IValidateCell> cellReqs = new List<IValidateCell>();
+    [Button(ButtonSizes.Large), GUIColor(0, .3f, 1f), PropertyOrder(2), FoldoutGroup("Criteria")]
+    void AddCriteria()
     {
-        if (useCelestialDist && (cell.DistToCelestial < MinDistToCelestial || cell.DistToCelestial > MaxDistToCelestial))
-            return false;
-        if (UseAmount && (cell.Amount < MinAmount || cell.Amount > MaxAmount))
-            return false;
-        if (UseFalloff && (cell.Falloff < MinFalloff || cell.Falloff > MaxFalloff))
-            return false;
-        return true;
+        IValidateCell cellReq = criteria switch
+        {
+            Criteria.Amount => new CellWithinAmount(),
+            Criteria.Falloff => new CellWithinFalloff(),
+            Criteria.DistFromStart => new CellWithinDistFromStart(),
+            Criteria.CelestialDist => new CellWithinCelestialDist(),
+            Criteria.Remoteness => new CellWithRemoteness(),
+            _ => throw new Exception("Don't have that enum covered"),
+        };
+        cellReqs.Add(cellReq);
     }
+    public virtual bool CellIsValid(Cell cell) => cellReqs.All(req => req.IsCellValid(cell));
     public virtual IEnumerable<Cell> FilterCells(IEnumerable<Cell> cells) => cells.Where(CellIsValid);
     public virtual void FinishedPlacing(Transform placedObj, Cell cell)
     {
 
     }
+    enum Criteria
+    {
+        Falloff,
+        Amount,
+        CelestialDist,
+        DistFromStart,
+        Remoteness,
+    }
 }
 public enum SearchOn
 {
     Amount,
-    Falloff
+    Falloff,
+    DistFromOrigin
 }

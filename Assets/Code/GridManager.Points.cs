@@ -11,22 +11,16 @@ public partial class GridManager
         CategorizeCellsByAmount();
         CalculateFalloff(cellsByAmount[largestCellDensity]);
         CategorizeCellsByFalloff();
-        PlayerCell.Update(UpsertCellWithCoord(PositionToCoord(Player.Transform.position)));
+        PlayerCell.Update(GetOrMakeCellWithCoord(PositionToCoord(Player.Transform.position)));
     }
     void FillCells(List<PointData> points)
     {
         foreach(var point in points)
         {
             Int3 cellCoord = point.Coord / cellSize;
-            if(knownCells.TryGetValue(cellCoord, out Cell cell))
-            {
-                cell.Amount++;
-                cell.Falloff++;
-            }
-            else {
-                cell = new Cell() { Coord = cellCoord, Amount = 1, Falloff = 1, Remoteness = 1 };
-                knownCells[cellCoord] = cell;
-            }
+            var cell = GetOrMakeCellWithCoord(cellCoord, amount: 0, falloff: 0, shouldInsert: false);
+            cell.Amount++;
+            cell.Falloff++;
         }
     }
     void CategorizeCellsByAmount()
@@ -49,14 +43,12 @@ public partial class GridManager
         {
             var curCell = heap.Pop();
             int neighborFalloff = FalloffFunc(curCell.Falloff);
-            Debug.Log($"Making falloff {curCell.Falloff} | Neighbor: {neighborFalloff}");
             var (occupied, unoccupied) = curCell.Coord.GetNeighbors().Split(coord => knownCells.ContainsKey(coord));
             if(curCell.Falloff > minPopulation)
             {
-                var emptyCells = unoccupied.Select(coord => new Cell() { Amount = 0, Falloff = neighborFalloff, Coord = coord });
+                var emptyCells = unoccupied.Select(coord => GetOrMakeCellWithCoord(coord, falloff: neighborFalloff, amount: 0));
                 emptyCells.ForEach(cell => {
-                    knownCells[cell.Coord] = cell;
-                    cellsByFalloff.InsertAt(neighborFalloff, cell);
+                    cell.Remoteness = curCell.Remoteness + 1;
                     visited.Add(cell);
                 });
                 heap.AddRange(emptyCells);
@@ -64,7 +56,10 @@ public partial class GridManager
             }
 
             var cellsToUpdate = occupied.Select(coord => knownCells[coord]).Where(cell => !visited.Contains(cell) || cell.Falloff < neighborFalloff);
-            cellsToUpdate.ForEach(cell => cell.Falloff = Mathf.Max(neighborFalloff, cell.Falloff));
+            cellsToUpdate.ForEach(cell => {
+                cell.Falloff = Mathf.Max(neighborFalloff, cell.Falloff);
+                cell.Remoteness = Mathf.Min(curCell.Remoteness + 1, cell.Remoteness);
+            });
             heap.AddRange(cellsToUpdate);
             visited.AddRange(cellsToUpdate);
         }

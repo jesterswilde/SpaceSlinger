@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ConnectorMotion : PlayerMotion
@@ -11,6 +12,10 @@ public class ConnectorMotion : PlayerMotion
     float minLength = 1f;
     [SerializeField]
     float lerpSpeed = 1f;
+    [SerializeField]
+    Color onCooldownColor;
+    [SerializeField]
+    float cooldownDuration; 
     float maxLength => connector.MaxLength;
     float connectionLength;
     Connector connector;
@@ -91,7 +96,8 @@ public class ConnectorMotion : PlayerMotion
             canBoost = false;
             startedBoosting = false;
             Callback.Create(() => isBoosting = false, boostDuration);
-            Callback.Create(()=> canBoost = true, 3f);
+            Callback.Create(()=> canBoost = true, cooldownDuration);
+            player.Visuals.CooldownFrom(onCooldownColor, cooldownDuration);
         }
         if(isBoosting && Input.GetKey(KeyCode.W))
             playerPos += Orientation.Forward * speedIncrease * deltaTime;
