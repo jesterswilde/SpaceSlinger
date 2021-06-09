@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using Unity.VisualScripting;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public class ConnectorMotion : PlayerMotion
@@ -17,6 +19,7 @@ public class ConnectorMotion : PlayerMotion
     [SerializeField]
     float cooldownDuration; 
     float maxLength => connector.MaxLength;
+    [SerializeField]
     float connectionLength;
     Connector connector;
     bool startedBoosting = false;
@@ -24,6 +27,8 @@ public class ConnectorMotion : PlayerMotion
     bool isBoosting = false;
     [SerializeField]
     float boostDuration = 0.5f;
+    [SerializeField]
+    RunningMotion groundedMotion;
 
     Vector3 orbPos => connector.To.position;
     Vector3 playerPos
@@ -35,18 +40,38 @@ public class ConnectorMotion : PlayerMotion
     {
         connector = _connector;
     }
-    internal override void Begin(Player _player)
+    internal override void Begin(Player _player, bool isChildMotion = false)
     {
         base.Begin(_player);
         connectionLength = Mathf.Max(Vector3.Distance(playerPos, orbPos), minLength);
+        groundedMotion.Begin(_player, true); 
     }
+    
     internal override void Run(float deltaTime)
     {
         base.Run(deltaTime);
         HandleChangeLength(deltaTime);
-        HandleSpeedChange(deltaTime);
-        HandleSwing(deltaTime);
-        LerpToOrientation(deltaTime);
+        if (player.IsOnGround)
+        {
+            groundedMotion.Run(deltaTime);
+            HandleGroundedRopeLength(deltaTime);
+        }
+        else
+        {
+            HandleSpeedChange(deltaTime);
+            HandleSwing(deltaTime);
+            LerpToOrientation(deltaTime);
+        }
+    }
+    void HandleGroundedRopeLength(float deltaTime)
+    {
+        var dist = Vector3.Distance(orbPos, player.transform.position);
+        Debug.Log($"Dist: {dist} | ConnLength; {connectionLength} | OrbPos: {orbPos}");
+        if(dist > connectionLength)
+        {
+            var dir = (player.transform.position - orbPos).normalized;
+            player.transform.position = orbPos + dir * connectionLength;
+        }
     }
     protected override void EventHappened(PlayerEvents e)
     {
@@ -62,8 +87,6 @@ public class ConnectorMotion : PlayerMotion
     void HandleSwing(float deltaTime)
     {
         var velocity = player.Velocity;
-        //if(!player.IsOnGround)
-        //    velocity += gravity * deltaTime;
         player.Rigid.velocity = velocity;
         var dist = Vector3.Distance(playerPos, orbPos);
         if(dist > connectionLength)
@@ -106,5 +129,7 @@ public class ConnectorMotion : PlayerMotion
     {
         if (canBoost && Input.GetKeyDown(KeyCode.W))
             startedBoosting = true;
+        if (player.IsOnGround)
+            groundedMotion.GetInputs();
     }
 }

@@ -18,12 +18,15 @@ public class PlayerMotion : SerializedMonoBehaviour
         Player.PEvent -= EventHappened;
     }
 
-    internal virtual void Begin(Player _player)
+    internal virtual void Begin(Player _player, bool isChildMotion = false)
     {
         player = _player;
-        player.Rigid.isKinematic = isKinematic;
-        player.Rigid.useGravity = useGravity;
-        Player.PEvent += EventHappened;
+        if (!isChildMotion)
+        {
+            player.Rigid.isKinematic = isKinematic;
+            player.Rigid.useGravity = useGravity;
+            Player.PEvent += EventHappened;
+        }
     }
 
     internal virtual void Run(float fixedDeltaTime)

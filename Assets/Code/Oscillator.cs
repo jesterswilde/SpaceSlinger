@@ -8,11 +8,21 @@ using UnityEngine;
 public class Oscillator : MonoBehaviour
 {
     [SerializeField]
-    List<MoveInfo> Movements;
+    List<MotionInfo> Movements;
     [SerializeField]
     Transform target;
 
-    Vector3 basePos; 
+    Vector3 basePos;
+
+    internal void UpdateMotion(MotionInfo motion)
+    {
+        Movements = new List<MotionInfo>() { motion };
+    }
+    internal void UpdateMotion(List<MotionInfo> motions)
+    {
+        Movements = motions;
+    }
+
     private void Update()
     {
         Vector3 offset = basePos;
@@ -32,17 +42,17 @@ public class Oscillator : MonoBehaviour
     {
         basePos = transform.position;
     }
-}
-[Serializable]
-class MoveInfo
-{
-    public MoveType MoveType;
-    public Vector3 Direction = Vector3.up;
-    public float Frequency = 1;
-    public float Phase;
-}
-enum MoveType
-{
-    Linear,
-    Sine
+    [Serializable]
+    public class MotionInfo
+    {
+        public MoveType MoveType;
+        public Vector3 Direction = Vector3.up;
+        public float Frequency = 1;
+        public float Phase;
+    }
+    public enum MoveType
+    {
+        Linear,
+        Sine
+    }
 }

@@ -22,7 +22,7 @@ public class RunningMotion : PlayerMotion
     float forwardInput;
     [SerializeField]
     float rightInput;
-    bool isMoving => forwardInput != 0 || rightInput != 0;
+    public bool IsMoving => forwardInput != 0 || rightInput != 0;
     Delta<bool> isReadyToJump = new Delta<bool>();
     Vector3 velocity;
     internal override void Run(float deltaTime)
@@ -40,7 +40,7 @@ public class RunningMotion : PlayerMotion
     void HandleMotion(float deltaTime)
     {
         FaceForward();
-        if (isMoving)
+        if (IsMoving)
             velocity = (rightInput * Vector3.right + forwardInput * Vector3.forward).normalized * acceleration;
         else
             velocity = Vector3.zero;
@@ -62,9 +62,5 @@ public class RunningMotion : PlayerMotion
             else
                 player.Rigid.AddForce(curJumpForce * Orientation.Up, ForceMode.Impulse);
         }
-    }
-    internal override void Begin(Player _player)
-    {
-        base.Begin(_player);
     }
 }

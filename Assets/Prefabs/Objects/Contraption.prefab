@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 3927059298818936436}
   - component: {fileID: 3927059298818936437}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: VecPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

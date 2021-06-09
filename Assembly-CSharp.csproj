@@ -123,6 +123,8 @@
     <Compile Include="Assets\Code\ColorChanger.cs" />
     <Compile Include="Assets\Code\PVisuals.cs" />
     <Compile Include="Assets\Code\ValidateCell.cs" />
+    <Compile Include="Assets\Code\ObjLauncher.cs" />
+    <Compile Include="Assets\Code\LaunchedObj.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Code\Fresnel.shader" />

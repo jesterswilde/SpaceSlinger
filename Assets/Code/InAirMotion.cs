@@ -6,7 +6,7 @@ public class InAirMotion : PlayerMotion
     float fallingControl;
     [SerializeField]
     float lerpVelocity = 1f;
-    internal override void Begin(Player _player)
+    internal override void Begin(Player _player, bool isChildMotion = false)
     {
         base.Begin(_player);
         if(player.Rigid.velocity.magnitude < player.Velocity.magnitude)

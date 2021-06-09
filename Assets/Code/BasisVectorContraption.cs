@@ -58,12 +58,13 @@ public class BasisVectorContraption : SerializedMonoBehaviour
         basis[Cog.Axis.X].Cog.TurnAmount.Update(normal.x * 2 - 1);
         basis[Cog.Axis.Y].Cog.TurnAmount.Update(normal.y * 2 - 1);
         basis[Cog.Axis.Z].Cog.TurnAmount.Update(normal.z * 2 - 1);
-        UpdateVecPos();
+        UpdateVecPos(false);
     }
-    void UpdateVecPos(){
+    void UpdateVecPos(bool shouldPropegation = true){
         vecDir = basis.Values.Aggregate(Vector3.zero, (vec, val) => val.Offset * val.TurnValue + vec);
         VecObj.position = vecDir + basePos;
-        LatticeMaker.UpdateBasis(associatedVector, vecDir.normalized, magnitude);
+        if(shouldPropegation)
+            LatticeMaker.UpdateBasis(associatedVector, vecDir.normalized, magnitude);
     }
     public void Connect()
     {
@@ -76,11 +77,11 @@ public class BasisVectorContraption : SerializedMonoBehaviour
 
     private void Start()
     {
+        basePos = VecObj.position;
         SetupCogs();
     }
     private void Awake()
     {
-        basePos = VecObj.position;
         camSystem = GetComponentInChildren<CameraSystem>();
     }
 }

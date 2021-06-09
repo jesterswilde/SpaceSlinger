@@ -21,7 +21,9 @@ public class Connector : Equipment
     LineRenderer line;
     public Transform From { get; private set; }
     public Transform To { get; private set; }
-    public Interactable Target;
+    Interactable target;
+    public override Interactable ConnectedTo => target;
+    public override bool IsConnected => target != null;
     [SerializeField]
     Material hookedLineMat;
     [SerializeField]
@@ -30,7 +32,6 @@ public class Connector : Equipment
     int numMiddlePoints;
     ConnectorMotion motion;
     [ShowInInspector]
-    public bool IsConnected => Target != null;
 
     void Fire()
     {
@@ -54,7 +55,7 @@ public class Connector : Equipment
     }
     void AttachedTo(GameObject go)
     {
-        Target = go.GetComponent<Interactable>();
+        target = go.GetComponent<Interactable>();
         From = Player.Transform;
         To = activeHook.transform;
         line.material = hookedLineMat;
@@ -70,7 +71,7 @@ public class Connector : Equipment
             activeHook.IsConnected = false;
             activeHook = null;
         }
-        Target = null;
+        target = null;
         From = null;
         To = null;
     }
