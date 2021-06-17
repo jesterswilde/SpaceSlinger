@@ -9,6 +9,7 @@ public class LaunchedObj : MonoBehaviour
     Oscillator.MotionInfo primedMotion;
     [SerializeField]
     float launchVelocity = 10f;
+    public Interactable Interactable { get; private set; }
     public float LaunchVelocity {
         get => launchVelocity;
         set => launchVelocity = value;
@@ -37,5 +38,11 @@ public class LaunchedObj : MonoBehaviour
         osc = GetComponentInChildren<Oscillator>();
         osc.UpdateMotion(neutralMotion);
         rigid = GetComponentInChildren<Rigidbody>();
+        Interactable = GetComponentInChildren<Interactable>();
+    }
+    private void Start()
+    {
+        Interactable.OnConnect += () => CameraController.LoadSystem(CameraController.AttachedCam);
+        //Interactable.OnDisconnect += () => CameraController.UnloadSystem(CameraController.AttachedCam);
     }
 }

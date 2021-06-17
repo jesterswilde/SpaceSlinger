@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class ObjLauncher : MonoBehaviour
 {
@@ -8,6 +8,7 @@ public class ObjLauncher : MonoBehaviour
     LaunchedObj prefab;
     [SerializeField]
     Transform startingPoint;
+    public Transform StartingPoint => startingPoint;
     [SerializeField]
     Transform raisedPoint;
     [SerializeField]
@@ -15,57 +16,75 @@ public class ObjLauncher : MonoBehaviour
     [SerializeField]
     float resetTimer;
     [SerializeField]
+    float timeToLaunch = 3f;
+    [SerializeField]
     ColorChanger platformColor;
     [SerializeField]
     Color activeColor;
+    public event Action DidLaunchObj;
+    int launchTicket = -1; 
 
-    LaunchedObj objToLaunch;
+    public LaunchedObj ObjToLaunch { get; private set; }
     bool readyToLaunch = false;
     bool isOnCooldown = false;
 
 
     void MakeLaunchObj() {
-        objToLaunch = Instantiate(prefab);
-        objToLaunch.transform.position = startingPoint.position;
-        objToLaunch.transform.up = startingPoint.up;
-        objToLaunch.LaunchVelocity = launchVelocity;
+        if(ObjToLaunch != null)
+        {
+            ObjToLaunch.Interactable.OnConnect -= PlayerConnected;
+            ObjToLaunch.Interactable.OnDisconnect -= PlayerDisconnected;
+        }
+
+        ObjToLaunch = Instantiate(prefab);
+        ObjToLaunch.Interactable.OnConnect += PlayerConnected;
+        ObjToLaunch.Interactable.OnDisconnect += PlayerDisconnected;
+
+        ObjToLaunch.transform.position = startingPoint.position;
+        ObjToLaunch.transform.up = startingPoint.up;
+        ObjToLaunch.LaunchVelocity = launchVelocity;
         isOnCooldown = false;
     }
-    public void PlayerSteppedOnPad()
+    void PlayerConnected()
     {
         if (isOnCooldown)
             return;
         platformColor.ChangeColor(activeColor);
         ReadyObjToLaunch();
     }
-    public void PlayerLeftPad() {
+    public void PlayerDisconnected() {
+        if(launchTicket != -1)
+        {
+            Callback.Remove(launchTicket);
+            launchTicket = -1; 
+        }
         platformColor.ChangeToBaseColor();
-        if (readyToLaunch)
-            LaunchObj();
-        else
-            UnreadyObj();
+        UnreadyObj();
         readyToLaunch = false;
     }
     void ReadyObjToLaunch() {
-        if(objToLaunch != null)
-            Lerper.MoveToAbsolute(objToLaunch.gameObject, raisedPoint.position, ()=> {
+        if(ObjToLaunch != null)
+            Lerper.MoveToAbsolute(ObjToLaunch.gameObject, raisedPoint.position, ()=> {
                 readyToLaunch = true;
-                objToLaunch.PrimeForLaunch();
+                ObjToLaunch.PrimeForLaunch();
             });
+        launchTicket = Callback.Create(LaunchObj, timeToLaunch);
     } 
     void UnreadyObj()
     {
-        var lerper = objToLaunch.GetComponent<Lerper>();
+        var lerper = ObjToLaunch.GetComponent<Lerper>();
         if (lerper)
             Destroy(lerper);
-        Lerper.MoveToAbsolute(objToLaunch.gameObject, startingPoint.position);
-        objToLaunch.Deactivate();
+        Lerper.MoveToAbsolute(ObjToLaunch.gameObject, startingPoint.position);
+        ObjToLaunch.Deactivate();
     }
     void LaunchObj()
     {
         isOnCooldown = true;
         Callback.Create(MakeLaunchObj, resetTimer);
-        objToLaunch.Launch();
+        ObjToLaunch.Interactable.OnDisconnect -= PlayerDisconnected;
+        ObjToLaunch.Launch();
+        DidLaunchObj?.Invoke();
     }
     private void Start()
     {

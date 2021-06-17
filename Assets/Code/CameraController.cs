@@ -26,6 +26,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     CameraSystem planetCam;
     public static CameraSystem PlanetCam => t.planetCam;
+    [SerializeField]
+    CameraSystem attachedCam;
+    public static CameraSystem AttachedCam => t.attachedCam;
     public static Vector3 NoYForward => Cam.transform.forward.NoY().normalized;
     public static Vector3 NoYRight => Cam.transform.right.NoY().normalized;
     public static Vector3 Forward => Cam.transform.forward;
@@ -39,6 +42,9 @@ public class CameraController : MonoBehaviour
     }
     public static void LoadSystem(CameraSystem system, float lerpSpeed = 1f)
     {
+        Debug.Log($"{system.name}");
+        if (t.curSystem == system)
+            return; 
         t.activeSystems.Add(system);
         t.prevSystem = t.curSystem;
         t.curSystem = system;
@@ -67,7 +73,6 @@ public class CameraController : MonoBehaviour
             prevSystem.Unmount(this);
             prevSystem = null;
         }
-        Debug.Log("Is lerping");
     }
     void SystemControlsCam()
     {

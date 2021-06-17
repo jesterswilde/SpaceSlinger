@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2021_1_4;UNITY_2021_1;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_QUICK_SEARCH_MODULE;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2021_1_4;UNITY_2021_1;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_QUICK_SEARCH_MODULE;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;ODIN_INSPECTOR;ODIN_INSPECTOR_3;OBI_ONI_SUPPORTED;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -87,13 +87,17 @@
     <Compile Include="Assets\Code\Delta.cs" />
     <Compile Include="Assets\Code\LatticeMaker.cs" />
     <Compile Include="Assets\Code\Int3.cs" />
+    <Compile Include="Assets\Code\ObjLauncher.cs" />
     <Compile Include="Assets\Code\Pickup.cs" />
+    <Compile Include="Assets\Code\LaunchedObj.cs" />
     <Compile Include="Assets\Code\PlaceChild.cs" />
     <Compile Include="Assets\Code\InAirMotion.cs" />
+    <Compile Include="Assets\Code\PVisuals.cs" />
     <Compile Include="Assets\Code\Checkpoint.cs" />
     <Compile Include="Assets\Code\CameraSystem.cs" />
     <Compile Include="Assets\Code\PlacePlanet.cs" />
     <Compile Include="Assets\Code\Orb.cs" />
+    <Compile Include="Assets\Code\ValidateCell.cs" />
     <Compile Include="Assets\Code\Heaptester.cs" />
     <Compile Include="Assets\Code\GridManager.Points.cs" />
     <Compile Include="Assets\Code\ItemIcon.cs" />
@@ -101,10 +105,11 @@
     <Compile Include="Assets\Code\Procedural.SearchContext.cs" />
     <Compile Include="Assets\Code\Helpers.cs" />
     <Compile Include="Assets\Code\Cog.cs" />
+    <Compile Include="Assets\Code\SurfaceObj.cs" />
     <Compile Include="Assets\Code\Hook.cs" />
     <Compile Include="Assets\Code\Heap.cs" />
     <Compile Include="Assets\Code\MaterialManager.cs" />
-    <Compile Include="Assets\Code\SurfaceObj.cs" />
+    <Compile Include="Assets\Code\SurfaceObjData.cs" />
     <Compile Include="Assets\Code\NoControl.cs" />
     <Compile Include="Assets\Code\Player.cs" />
     <Compile Include="Assets\Code\Planet.cs" />
@@ -121,13 +126,65 @@
     <Compile Include="Assets\Code\Placement.cs" />
     <Compile Include="Assets\Code\UI.cs" />
     <Compile Include="Assets\Code\ColorChanger.cs" />
-    <Compile Include="Assets\Code\PVisuals.cs" />
-    <Compile Include="Assets\Code\ValidateCell.cs" />
-    <Compile Include="Assets\Code\ObjLauncher.cs" />
-    <Compile Include="Assets\Code\LaunchedObj.cs" />
+    <Compile Include="Assets\Code\LauncherCam.cs" />
+    <Compile Include="Assets\Code\ControlLaunchCam.cs" />
+    <Compile Include="Assets\Code\AttachedCam.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ExtrapolationCamera.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorSpawner.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\AddRandomVelocity.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromVelocity.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\DebugParticleFrames.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CollisionEventHandler.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopeGameController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\FPSDisplay.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectDragger.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\SampleCharacterController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectLimit.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SnakeController.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGeneratorUse.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CharacterControl2D.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\Wrappable.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\ObiCharacter.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\Blinker.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeSweepCut.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SpiralCurve.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\GrapplingHook.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopePlayerController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiParticleCounter.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\LookAroundCamera.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTensionColorizer.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeNet.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CursorController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorCOMTransform.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\SlowmoToggler.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorRandomizer.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CraneController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\MoveAndRotate.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTenser.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGenerator.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RobotArmController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromPhase.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColliderHighlighter.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiActorTeleport.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\WorldSpaceGravity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Obi\Resources\ObiMaterials\ParticleShader.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\URP\ObiLightingURP.cginc" />
+    <None Include="Assets\Obi\Plugins\x86_64\libOni.dll" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\ObiLightingBuiltIn.cginc" />
     <None Include="Assets\Code\Fresnel.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\DistanceFieldSlice.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\ObiParticles.cginc" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\StandardVertexColors.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\SimpleParticleShader.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\ObiEllipsoids.cginc" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\URP\ParticleShaderURP.shader" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\URP\SimpleParticleShaderURP.shader" />
+    <None Include="Assets\Obi\Plugins\x86\libOni.dll" />
+    <None Include="Assets\Obi\CHANGELOG_rope.txt" />
+    <None Include="Assets\Obi\Plugins\libOni.bundle\Contents\Resources\CMakeLists.txt" />
+    <None Include="Assets\Obi\Resources\ObiMaterials\ObiUtils.cginc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -384,6 +441,9 @@
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.4.8\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.4f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -814,6 +874,12 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
@@ -827,6 +893,14 @@
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{B230D2DB-6490-1270-558A-8112A58553F7}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Obi.Editor.csproj">
+      <Project>{0B249BC8-42FF-899C-2DB1-43E132A6E068}</Project>
+      <Name>Obi.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Obi.csproj">
+      <Project>{EF4C948B-B59F-9A7E-424B-636874E2590C}</Project>
+      <Name>Obi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

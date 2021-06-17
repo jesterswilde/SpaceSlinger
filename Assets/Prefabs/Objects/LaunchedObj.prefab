@@ -55,6 +55,7 @@ MonoBehaviour:
     Frequency: 10
     Phase: 0
   launchVelocity: 50
+  camSys: {fileID: 0}
 --- !u!1 &7630345351148959724
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,8 +71,9 @@ GameObject:
   - component: {fileID: 4771527340790366611}
   - component: {fileID: 150868224854516189}
   - component: {fileID: 1237531318854639381}
+  - component: {fileID: 1033566173548305391}
   m_Layer: 7
-  m_Name: Mesh
+  m_Name: FlyingObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -206,3 +208,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movements: []
   target: {fileID: 4619080919388179489}
+--- !u!114 &1033566173548305391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630345351148959724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bcefdb9fd97154e8132db8918f7a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOver:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  hoverMat: {fileID: 2100000, guid: 6f7a73eee17a27a4c825338115197c9b, type: 2}

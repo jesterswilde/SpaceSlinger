@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
@@ -46,9 +47,20 @@ public class ConnectorMotion : PlayerMotion
         connectionLength = Mathf.Max(Vector3.Distance(playerPos, orbPos), minLength);
         groundedMotion.Begin(_player, true); 
     }
-    
+    internal override void End()
+    {
+        base.End();
+        player.Rigid.velocity = player.Velocity;
+    }
+
+    bool wasOnGround = false;
     internal override void Run(float deltaTime)
     {
+        if(wasOnGround != player.IsOnGround)
+        {
+            Debug.Log($"Changed to {player.IsOnGround}");
+        }
+        wasOnGround = player.IsOnGround;
         base.Run(deltaTime);
         HandleChangeLength(deltaTime);
         if (player.IsOnGround)
@@ -66,7 +78,6 @@ public class ConnectorMotion : PlayerMotion
     void HandleGroundedRopeLength(float deltaTime)
     {
         var dist = Vector3.Distance(orbPos, player.transform.position);
-        Debug.Log($"Dist: {dist} | ConnLength; {connectionLength} | OrbPos: {orbPos}");
         if(dist > connectionLength)
         {
             var dir = (player.transform.position - orbPos).normalized;
@@ -87,7 +98,8 @@ public class ConnectorMotion : PlayerMotion
     void HandleSwing(float deltaTime)
     {
         var velocity = player.Velocity;
-        player.Rigid.velocity = velocity;
+        //player.Rigid.velocity = velocity;
+        player.transform.position += velocity * deltaTime;
         var dist = Vector3.Distance(playerPos, orbPos);
         if(dist > connectionLength)
         {

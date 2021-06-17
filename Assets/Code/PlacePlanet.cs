@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlacePlanet : Placement
 {
     [SerializeField, FoldoutGroup("Planet")]
-    List<SurfaceObj> surfaceObjs = new List<SurfaceObj>();
+    List<SurfaceObjData> surfaceObjs = new List<SurfaceObjData>();
     [SerializeField, FoldoutGroup("Planet")]
     public List<PlaceChild> childPlacements =  new List<PlaceChild>();
     [SerializeField, FoldoutGroup("Planet")]
@@ -28,14 +28,26 @@ public class PlacePlanet : Placement
                 PlaceOptions.Void => GridManager.ToEmptiestCell(cell),
                 _ => Vector3.up
             };
-            PlaceSurfaceObject(planetTrans, obj, baseDir);
+            List<SurfaceObj> placedObjs = new List<SurfaceObj>();
+            PlaceSurfaceObject(planetTrans, obj, baseDir, placedObjs);
         });
     }
-    void PlaceSurfaceObject(Transform planetTrans, SurfaceObj obj, Vector3 baseDir)
+    void PlaceSurfaceObject(Transform planetTrans, SurfaceObjData obj, Vector3 baseDir, List<SurfaceObj> placedObj)
     {
-        var dir = obj.GetAngle(baseDir);
-        var trans = Instantiate(obj.Prefab);
-        trans.position = planetTrans.position + dir * distFromCenter;
-        trans.up = dir; 
+        var surfaceObj = Instantiate(obj.Prefab);
+        float extraAngle = 0;
+        bool needsNewPlacement = true;
+        Vector3 dir = Vector3.up; 
+        while (needsNewPlacement)
+        {
+            dir = obj.GetAngle(baseDir, extraAngle);
+            surfaceObj.transform.position = planetTrans.position + dir * distFromCenter;
+            if (placedObj.Count == 0)
+                needsNewPlacement = false;
+            else
+                needsNewPlacement = placedObj.All(other => !surfaceObj.CollidesWith(other));
+            extraAngle += 1;
+        }
+        surfaceObj.transform.up = dir; 
     }
 }

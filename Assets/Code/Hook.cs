@@ -7,10 +7,11 @@ public class Hook : MonoBehaviour
     LayerMask mask;
     [SerializeField]
     float speed = 1f;
-    public bool IsConnected { get; set; } = true;
+    public bool IsActive { get; set; } = true;
     public Rigidbody Rigid { get; private set; }
     Func<GameObject, bool> ShouldHook;
     Action<GameObject> DidHookOntoThing;
+    bool isHooked = false;
 
     public void Setup(Vector3 initialForce, Func<GameObject, bool> hookCheck, Action<GameObject> didhook)
     {
@@ -20,11 +21,13 @@ public class Hook : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsConnected && (ShouldHook?.Invoke(collision.gameObject) ?? false))
+        if (IsActive && !isHooked && (ShouldHook?.Invoke(collision.gameObject) ?? false))
             HookOnto(collision.gameObject);
     }
     void HookOnto(GameObject hookedOnto)
     {
+        Debug.Log($"Hooked onto {hookedOnto.name}");
+        isHooked = true; 
         DidHookOntoThing?.Invoke(hookedOnto);
         Destroy(Rigid);
         transform.forward = hookedOnto.transform.position - transform.position;
