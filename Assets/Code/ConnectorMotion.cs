@@ -98,8 +98,8 @@ public class ConnectorMotion : PlayerMotion
     void HandleSwing(float deltaTime)
     {
         var velocity = player.Velocity;
-        //player.Rigid.velocity = velocity;
-        player.transform.position += velocity * deltaTime;
+        player.Rigid.velocity = velocity;
+        //player.transform.position += velocity * deltaTime;
         var dist = Vector3.Distance(playerPos, orbPos);
         if(dist > connectionLength)
         {

@@ -65,7 +65,7 @@ public class Connector : Equipment
         To = activeHook.transform;
         line.material = hookedLineMat;
         motion.Connected(this);
-        Player.EquipmentConnected(this, motion);
+        Player.EquipmentConnected(motion);
 
         connectedInter = go.GetComponentInChildren<Interactable>();
         connectedInter?.Connected();

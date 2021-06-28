@@ -4,15 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 [RequireComponent(typeof(Rigidbody))]
 public class Player : SerializedMonoBehaviour
 {
     Inventory inventory;
     public static Inventory Inventory => T.inventory;
     public static Player T { get; private set; }
+    public static bool DoesExist => T != null;
+    bool isActive = true;
     List<Renderer> rends;
-    public static Transform Transform => T.transform;
+    public static Transform Transform => T?.transform;
     public Rigidbody Rigid { get; private set; }
     public static event Action<PlayerEvents> PEvent; 
     [SerializeField]
@@ -31,33 +32,17 @@ public class Player : SerializedMonoBehaviour
     public bool IsOnGround => groundDetector.IsBlocked;
 
     public PVisuals Visuals { get; private set; }
-    public Equipment ConnectedEquipment { get; private set; }
-    [SerializeField]
-    public Equipment PrimaryEquipment { get; private set; }
-    [SerializeField]
-    public Equipment SecondaryEquipment { get; private set; }
-    public static List<Equipment> GetEquipment()
-    {
-        var equip = new List<Equipment>();
-        if(T.PrimaryEquipment != null)
-            equip.Add(T.PrimaryEquipment);
-        if(T.SecondaryEquipment != null)
-            equip.Add(T.SecondaryEquipment);
-        return equip;
-    }
-    public static float HoverDist => T.PrimaryEquipment?.HoverRange ?? 0;
-    public static Vector3 ProjectilePosition { get
-        {
+    public static Vector3 ProjectilePosition { get {
             return Vector3.Project(T.transform.position -  CameraController.Cam.transform.position, CameraController.Cam.transform.forward) + Transform.position;
         } }
     public static Vector3 ProjectileDirection { get {
             if (HoverManager.Target != null)
                 return (HoverManager.Target.position - ProjectilePosition).normalized;
-            var endTarget = CameraController.Cam.transform.position + CameraController.Cam.transform.forward * HoverDist;
+            var endTarget = CameraController.Cam.transform.position + CameraController.Cam.transform.forward * HoverManager.HoverDist;
             return (endTarget - ProjectilePosition).normalized;
         } }
 
-
+    public void SetActive(bool value)=> isActive = value;
     public void ChangeMode(PlayerMode mode)
     {
         if (mode == PlayerMode.Unchanged || motion?.Mode == mode)
@@ -70,9 +55,8 @@ public class Player : SerializedMonoBehaviour
     }
 
 
-    public static void EquipmentConnected(Equipment equip, PlayerMotion motion)
+    public static void EquipmentConnected(PlayerMotion motion)
     {
-        T.ConnectedEquipment = equip;
         EventHappened(PlayerEvents.Connected);
         T.motion?.End();
         T.motion = motion;
@@ -90,22 +74,7 @@ public class Player : SerializedMonoBehaviour
     {
         rends.ForEach(rend => rend.enabled = newDist > hideDist);
     }
-    void UseEquipment()
-    {
-        if (!Input.GetKey(KeyCode.LeftAlt))
-        {
-            if (Input.GetMouseButtonDown(0))
-                PrimaryEquipment?.Activate();
-            if (Input.GetMouseButtonDown(1))
-                SecondaryEquipment?.Activate();
-        }
-        else { 
-            if (Input.GetMouseButtonDown(0))
-                PrimaryEquipment?.ActivateSecondary();
-            if (Input.GetMouseButtonDown(1))
-                SecondaryEquipment?.ActivateSecondary();
-        }
-    }
+    
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     static void StaticReset()
     {
@@ -113,7 +82,8 @@ public class Player : SerializedMonoBehaviour
     }
     private void FixedUpdate()
     {
-        motion?.Run(Time.fixedDeltaTime);
+        if(isActive)
+            motion?.Run(Time.fixedDeltaTime);
         CheckForEvents();
         isGrounded.Update(IsOnGround);
         Position.Update(transform.position);
@@ -121,7 +91,6 @@ public class Player : SerializedMonoBehaviour
 
     private void Update()
     {
-        UseEquipment();
         motion?.GetInputs();
     }
     private void Start()
@@ -136,7 +105,6 @@ public class Player : SerializedMonoBehaviour
         Position = new Delta<Vector3>() { Value = transform.position, Previous = transform.position };
         rends = GetComponentsInChildren<Renderer>().ToList();
         ChangeMode(currentMode);
-        PrimaryEquipment?.Equip();
         Visuals = GetComponent<PVisuals>();
     }
 }

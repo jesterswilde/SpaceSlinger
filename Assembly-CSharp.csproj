@@ -64,20 +64,20 @@
     <Compile Include="Assets\Code\SparseList.cs" />
     <Compile Include="Assets\Code\RunningMotion.cs" />
     <Compile Include="Assets\Code\GrabMotion.cs" />
-    <Compile Include="Assets\Code\ResetManager.cs" />
+    <Compile Include="Assets\Code\Managers\ResetManager.cs" />
     <Compile Include="Assets\Code\BasisVectorContraption.cs" />
     <Compile Include="Assets\Code\Detector.cs" />
     <Compile Include="Assets\Code\Generator.cs" />
     <Compile Include="Assets\Code\MoveToSurface.cs" />
     <Compile Include="Assets\Code\Placeable.cs" />
-    <Compile Include="Assets\Code\Orientation.cs" />
+    <Compile Include="Assets\Code\Managers\Orientation.cs" />
     <Compile Include="Assets\Code\Gravity.cs" />
-    <Compile Include="Assets\Code\Procedural.cs" />
+    <Compile Include="Assets\Code\Managers\Procedural.cs" />
     <Compile Include="Assets\Code\Connector.cs" />
     <Compile Include="Assets\Code\ConnectorMotion.cs" />
-    <Compile Include="Assets\Code\GridManager.cs" />
+    <Compile Include="Assets\Code\Managers\GridManager.cs" />
     <Compile Include="Assets\Code\Compass.cs" />
-    <Compile Include="Assets\Code\BasicCamera.cs" />
+    <Compile Include="Assets\Code\Camera\BasicCamera.cs" />
     <Compile Include="Assets\Code\HoverManager.cs" />
     <Compile Include="Assets\Code\Interactable.cs" />
     <Compile Include="Assets\Code\GameManager.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Assets\Code\Callback.cs" />
     <Compile Include="Assets\Code\IGrabbable.cs" />
     <Compile Include="Assets\Code\Delta.cs" />
-    <Compile Include="Assets\Code\LatticeMaker.cs" />
+    <Compile Include="Assets\Code\Managers\LatticeMaker.cs" />
     <Compile Include="Assets\Code\Int3.cs" />
     <Compile Include="Assets\Code\ObjLauncher.cs" />
     <Compile Include="Assets\Code\Pickup.cs" />
@@ -94,15 +94,15 @@
     <Compile Include="Assets\Code\InAirMotion.cs" />
     <Compile Include="Assets\Code\PVisuals.cs" />
     <Compile Include="Assets\Code\Checkpoint.cs" />
-    <Compile Include="Assets\Code\CameraSystem.cs" />
+    <Compile Include="Assets\Code\Camera\CameraSystem.cs" />
     <Compile Include="Assets\Code\PlacePlanet.cs" />
     <Compile Include="Assets\Code\Orb.cs" />
     <Compile Include="Assets\Code\ValidateCell.cs" />
     <Compile Include="Assets\Code\Heaptester.cs" />
-    <Compile Include="Assets\Code\GridManager.Points.cs" />
+    <Compile Include="Assets\Code\Managers\GridManager.Points.cs" />
     <Compile Include="Assets\Code\ItemIcon.cs" />
     <Compile Include="Assets\Code\PlayerMotion.cs" />
-    <Compile Include="Assets\Code\Procedural.SearchContext.cs" />
+    <Compile Include="Assets\Code\Managers\Procedural.SearchContext.cs" />
     <Compile Include="Assets\Code\Helpers.cs" />
     <Compile Include="Assets\Code\Cog.cs" />
     <Compile Include="Assets\Code\SurfaceObj.cs" />
@@ -113,22 +113,22 @@
     <Compile Include="Assets\Code\NoControl.cs" />
     <Compile Include="Assets\Code\Player.cs" />
     <Compile Include="Assets\Code\Planet.cs" />
-    <Compile Include="Assets\Code\GridManager.Cells.cs" />
-    <Compile Include="Assets\Code\PlanetCamera.cs" />
+    <Compile Include="Assets\Code\Managers\GridManager.Cells.cs" />
+    <Compile Include="Assets\Code\Camera\PlanetCamera.cs" />
     <Compile Include="Assets\Code\Equipment.cs" />
     <Compile Include="Assets\Code\Oscillator.cs" />
     <Compile Include="Assets\Code\PointData.cs" />
-    <Compile Include="Assets\Code\CameraController.cs" />
+    <Compile Include="Assets\Code\Camera\CameraController.cs" />
     <Compile Include="Assets\Code\Inventory.cs" />
     <Compile Include="Assets\Code\Hoverable.cs" />
     <Compile Include="Assets\Code\Grab.cs" />
-    <Compile Include="Assets\Code\CamTest.cs" />
+    <Compile Include="Assets\Code\Camera\CamTest.cs" />
     <Compile Include="Assets\Code\Placement.cs" />
     <Compile Include="Assets\Code\UI.cs" />
     <Compile Include="Assets\Code\ColorChanger.cs" />
     <Compile Include="Assets\Code\LauncherCam.cs" />
     <Compile Include="Assets\Code\ControlLaunchCam.cs" />
-    <Compile Include="Assets\Code\AttachedCam.cs" />
+    <Compile Include="Assets\Code\Camera\AttachedCam.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ExtrapolationCamera.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorSpawner.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\AddRandomVelocity.cs" />
@@ -167,6 +167,24 @@
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColliderHighlighter.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiActorTeleport.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\WorldSpaceGravity.cs" />
+    <Compile Include="Assets\Code\OrbSpawner.cs" />
+    <Compile Include="Assets\Code\Mathfx.cs" />
+    <Compile Include="Assets\Code\OrbWrapper.cs" />
+    <Compile Include="Assets\Code\Hangtime.cs" />
+    <Compile Include="Assets\Code\Drawing\V_LightMaker.cs" />
+    <Compile Include="Assets\Code\Drawing\SmoothDrawTool.cs" />
+    <Compile Include="Assets\Code\Drawing\BoxMaker.cs" />
+    <Compile Include="Assets\Code\Drawing\Slash.cs" />
+    <Compile Include="Assets\Code\Drawing\Sketching.cs" />
+    <Compile Include="Assets\Code\Drawing\ISketchMode.cs" />
+    <Compile Include="Assets\Code\Drawing\FloatingPlatform.cs" />
+    <Compile Include="Assets\Code\Gear.cs" />
+    <Compile Include="Assets\Code\PlayerInput.cs" />
+    <Compile Include="Assets\Code\Drawing\PlatformGrid.cs" />
+    <Compile Include="Assets\Code\Managers\ModeManager.cs" />
+    <Compile Include="Assets\Code\SentenceMenu.cs" />
+    <Compile Include="Assets\Code\MenuDisplay.cs" />
+    <Compile Include="Assets\Code\MenuItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Obi\Resources\ObiMaterials\ParticleShader.shader" />
@@ -181,9 +199,6 @@
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiEllipsoids.cginc" />
     <None Include="Assets\Obi\Resources\ObiMaterials\URP\ParticleShaderURP.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\URP\SimpleParticleShaderURP.shader" />
-    <None Include="Assets\Obi\Plugins\x86\libOni.dll" />
-    <None Include="Assets\Obi\CHANGELOG_rope.txt" />
-    <None Include="Assets\Obi\Plugins\libOni.bundle\Contents\Resources\CMakeLists.txt" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiUtils.cginc" />
   </ItemGroup>
   <ItemGroup>
@@ -893,10 +908,6 @@
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{B230D2DB-6490-1270-558A-8112A58553F7}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Obi.Editor.csproj">
-      <Project>{0B249BC8-42FF-899C-2DB1-43E132A6E068}</Project>
-      <Name>Obi.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Obi.csproj">
       <Project>{EF4C948B-B59F-9A7E-424B-636874E2590C}</Project>

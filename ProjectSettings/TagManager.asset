@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - "\u4F60\u8981\u4E00\u4E9B\u5C0F\u997A\u5B50\u5417"
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Player
   - Hoverable
   - Gravity
-  - 
+  - Drawing
   - 
   - 
   - 

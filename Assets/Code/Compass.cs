@@ -12,7 +12,7 @@ public class Compass : MonoBehaviour
         var val = tracking switch
         {
             TrackingEnum.Gravity => Physics.gravity,
-            TrackingEnum.Velocity => Player.T.Velocity
+            TrackingEnum.Velocity => Player.T?.Velocity ?? Vector3.zero
         };
         if (val != Vector3.zero)
             transform.forward = val;

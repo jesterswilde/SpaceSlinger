@@ -20,7 +20,7 @@ public class Hoverable : MonoBehaviour
     internal virtual void HoverExit()
     {
         OnExit?.Invoke();
-        if (hoverMat != null && Player.GetEquipment().Any(equip => equip.ShouldHighlight(this)))
+        if (hoverMat != null && Gear.T?.Equipped != null && Gear.T.Equipped.ShouldHighlight(this))
             rends.ForEach((rend, i) => rend.material = baseMats[i]);
     }
 

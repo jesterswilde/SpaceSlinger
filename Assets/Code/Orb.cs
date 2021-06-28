@@ -1,25 +1,19 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Orb : Hoverable
 {
-    //[SerializeField]
-    //Material baseMat;
-    //[SerializeField]
-    //Material higlightMat;
-    //Renderer _rend;
-    //Renderer rend { get {
-    //        _rend ??= GetComponent<Renderer>();
-    //        return _rend;
-    //    } }
+    public void StartVibrating()
+    {
+    }
+    public void StopVibrating()
+    {
 
-    //internal override void HoverEnter()
-    //{
-    //    rend.material = higlightMat;
-    //}
-    //internal override void HoverExit()
-    //{
-    //    rend.material = baseMat;
-    //}
+    }
+    internal void EnableCollision()
+    {
+        GetComponentInChildren<Collider>().enabled = true;
+    }
 }

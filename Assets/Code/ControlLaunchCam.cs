@@ -20,7 +20,7 @@ class ControlLaunchCam : MonoBehaviour
             _launchObj ??= launcher.GetComponent<Interactable>();
             return _launchObj;
         } }
-    Interactable playerConnectedTo => Player.T.ConnectedEquipment?.ConnectedTo;
+    Interactable playerConnectedTo => Gear.T?.ConnectedEquipment?.ConnectedTo;
     bool isFollowing = false;
     public void PlayerEnteredArea()
     {

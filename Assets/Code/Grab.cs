@@ -29,7 +29,7 @@ public class Grab : Equipment
                     Debug.Log("In Range");
                     GrabbedThing = grabbable;
                     motion.HoldOnto(this);
-                    Player.EquipmentConnected(this, motion);
+                    Player.EquipmentConnected(motion);
                 }
             }
         }

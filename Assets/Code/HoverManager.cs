@@ -5,7 +5,10 @@ using UnityEngine;
 public class HoverManager : MonoBehaviour
 {
     static HoverManager t;
-    float rayDist => Player.HoverDist;
+    [SerializeField]
+    float hoverDist = 50f;
+    public static float HoverDist => t?.rayDist ?? 50f;
+    float rayDist => Gear.T?.Equipped?.HoverRange ?? hoverDist;
     Delta<Hoverable> hovering;
     public static Transform Target => t.hovering.Value?.transform;
     [SerializeField]

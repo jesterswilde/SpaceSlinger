@@ -13,6 +13,8 @@ public class ColorChanger : MonoBehaviour
     float lerpSpeed => externalLerpSpeed.HasValue ? externalLerpSpeed.Value : baseLerpSpeed;
     [ShowInInspector]
     float lerpPos = 0;
+    [SerializeField]
+    string colorProp = "_Color";
     bool shouldLerp => lerpPos > 0;
     List<Renderer> rends;
     List<Color> baseColors;
@@ -27,12 +29,12 @@ public class ColorChanger : MonoBehaviour
         externalLerpSpeed = duration;
         if (shouldLerp)
         {
-            startingColors = rends.Select(rend => rend.material.color).ToList();
+            startingColors = rends.Select(rend => rend.material.GetColor(colorProp)).ToList();
             targetColors = colors;
             lerpPos = 1f;
         }
         else
-            rends.ForEach((rend, i) => rend.material.color = colors[i]);
+            rends.ForEach((rend, i) => rend.material.SetColor(colorProp, colors[i]));
     }
     internal void ChangeToBaseColor(bool shouldLerp = true, float? duration = null)
     {
@@ -41,7 +43,7 @@ public class ColorChanger : MonoBehaviour
     void LerpColor()
     {
         lerpPos = Mathf.Max(0, lerpPos - lerpSpeed * Time.deltaTime);
-        rends.ForEach((rend, i) => rend.material.color = Color.Lerp(targetColors[i], startingColors[i], lerpPos));
+        rends.ForEach((rend, i) => rend.material.SetColor(colorProp, Color.Lerp(targetColors[i], startingColors[i], lerpPos)));
     }
 
     private void Update()
@@ -52,6 +54,6 @@ public class ColorChanger : MonoBehaviour
     private void Awake()
     {
         rends = GetComponentsInChildren<Renderer>().Where(rend => rend.enabled).ToList();
-        baseColors = rends.Select(rend => rend.material.color).ToList();
+        baseColors = rends.Select(rend => rend.material.GetColor(colorProp)).ToList();
     }
 }

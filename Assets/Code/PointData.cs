@@ -13,6 +13,7 @@ public class PointData
     public List<int> VectorCount;
     public Int3 Coord;
     public Transform Transform;
+    public bool HasOrb => Transform != null;
     public PointData(List<int> counts, List<Int3> basisVectors)
     {
         int X = 0, Y = 0, Z = 0;

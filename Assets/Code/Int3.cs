@@ -33,6 +33,7 @@ public struct Int3
         $"[{X} {Y} {Z}]";
     public Vector3 ToVector() => new Vector3((float)X, (float)Y, (float)Z);
     public static Int3 FromVector(Vector3 pos) => new Int3() { X = (int)pos.x, Y = (int)pos.y, Z = (int)pos.z };
+    public static Int3 FromInts(int x, int y, int z) => new Int3() { X = x, Y = y, Z = z };
     public List<Int3> GetNeighbors()
     {
         List<Int3> result = new List<Int3>();

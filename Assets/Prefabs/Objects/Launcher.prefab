@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 8047318483800646059}
   - component: {fileID: 8047318483800646058}
   - component: {fileID: 8047318483800646061}
+  - component: {fileID: 970797743}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -324,6 +325,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &970797743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047318483800646063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc7b231cfcb33c4d94cfffe2ce4931f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseLerpSpeed: 1
 --- !u!1 &8047318484052811144
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8047318484319171065}
+  - component: {fileID: 970797742}
   m_Layer: 0
   m_Name: Launcher
   m_TagString: Untagged
@@ -451,6 +466,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &970797742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047318484319171064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb4b8b218ee1e343ac596ab92b5fac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3933798255748116261, guid: 5ba76135e91438f41b1d8c9afc90037c, type: 3}
+  startingPoint: {fileID: 8047318484710573625}
+  raisedPoint: {fileID: 8047318483371429245}
+  launchVelocity: 100
+  resetTimer: 3
+  timeToLaunch: 3
+  platformColor: {fileID: 970797743}
+  activeColor: {r: 0.764151, g: 0.1057315, b: 0.1057315, a: 0}
 --- !u!1 &8047318484582522592
 GameObject:
   m_ObjectHideFlags: 0

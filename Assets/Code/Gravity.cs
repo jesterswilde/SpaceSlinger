@@ -58,7 +58,8 @@ public class Gravity : SerializedMonoBehaviour
     }
     private void Start()
     {
-        Player.T.Position.OnChange += (a,b) => SetDirty();
+        if(Player.DoesExist)
+            Player.T.Position.OnChange += (a,b) => SetDirty();
     }
     private void Awake()
     {
