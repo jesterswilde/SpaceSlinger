@@ -59,147 +59,174 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\AddRandomVelocity.cs" />
+    <Compile Include="Assets\Code\OrbSpawner.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\FPSDisplay.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectDragger.cs" />
     <Compile Include="Assets\Code\Item.cs" />
     <Compile Include="Assets\Code\Lerper.cs" />
     <Compile Include="Assets\Code\SparseList.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\Wrappable.cs" />
+    <Compile Include="Assets\Code\Drawing\BoxMaker.cs" />
     <Compile Include="Assets\Code\RunningMotion.cs" />
-    <Compile Include="Assets\Code\GrabMotion.cs" />
+    <Compile Include="Assets\Code\Player\GrabMotion.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiParticleCounter.cs" />
     <Compile Include="Assets\Code\Managers\ResetManager.cs" />
+    <Compile Include="Assets\Code\Drawing\FloatingPlatform.cs" />
     <Compile Include="Assets\Code\BasisVectorContraption.cs" />
     <Compile Include="Assets\Code\Detector.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColliderHighlighter.cs" />
     <Compile Include="Assets\Code\Generator.cs" />
     <Compile Include="Assets\Code\MoveToSurface.cs" />
     <Compile Include="Assets\Code\Placeable.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CollisionEventHandler.cs" />
+    <Compile Include="Assets\Code\OrbWrapper.cs" />
     <Compile Include="Assets\Code\Managers\Orientation.cs" />
     <Compile Include="Assets\Code\Gravity.cs" />
+    <Compile Include="Assets\Code\Camera\AttachedCam.cs" />
     <Compile Include="Assets\Code\Managers\Procedural.cs" />
-    <Compile Include="Assets\Code\Connector.cs" />
-    <Compile Include="Assets\Code\ConnectorMotion.cs" />
+    <Compile Include="Assets\Code\Player\Connector.cs" />
+    <Compile Include="Assets\Code\Player\ConnectorMotion.cs" />
     <Compile Include="Assets\Code\Managers\GridManager.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\GrapplingHook.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorCOMTransform.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\SlowmoToggler.cs" />
     <Compile Include="Assets\Code\Compass.cs" />
+    <Compile Include="Assets\Code\Mathfx.cs" />
     <Compile Include="Assets\Code\Camera\BasicCamera.cs" />
     <Compile Include="Assets\Code\HoverManager.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\DebugParticleFrames.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\SampleCharacterController.cs" />
     <Compile Include="Assets\Code\Interactable.cs" />
+    <Compile Include="Assets\Code\PlayerInput.cs" />
     <Compile Include="Assets\Code\GameManager.cs" />
     <Compile Include="Assets\Code\LandmarkCamera.cs" />
     <Compile Include="Assets\Code\Callback.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\ObiCharacter.cs" />
     <Compile Include="Assets\Code\IGrabbable.cs" />
     <Compile Include="Assets\Code\Delta.cs" />
+    <Compile Include="Assets\Code\ControlLaunchCam.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopePlayerController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\LookAroundCamera.cs" />
     <Compile Include="Assets\Code\Managers\LatticeMaker.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeNet.cs" />
     <Compile Include="Assets\Code\Int3.cs" />
     <Compile Include="Assets\Code\ObjLauncher.cs" />
     <Compile Include="Assets\Code\Pickup.cs" />
     <Compile Include="Assets\Code\LaunchedObj.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiActorTeleport.cs" />
     <Compile Include="Assets\Code\PlaceChild.cs" />
-    <Compile Include="Assets\Code\InAirMotion.cs" />
+    <Compile Include="Assets\Code\Player\InAirMotion.cs" />
     <Compile Include="Assets\Code\PVisuals.cs" />
+    <Compile Include="Assets\Code\Menu\SentenceMenuDisplay.cs" />
     <Compile Include="Assets\Code\Checkpoint.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectLimit.cs" />
+    <Compile Include="Assets\Code\Drawing\PlatformGrid.cs" />
     <Compile Include="Assets\Code\Camera\CameraSystem.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SpiralCurve.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTensionColorizer.cs" />
     <Compile Include="Assets\Code\PlacePlanet.cs" />
     <Compile Include="Assets\Code\Orb.cs" />
+    <Compile Include="Assets\Code\Player\Gear.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CraneController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\MoveAndRotate.cs" />
     <Compile Include="Assets\Code\ValidateCell.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGenerator.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromPhase.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromVelocity.cs" />
+    <Compile Include="Assets\Code\Drawing\ISketchMode.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopeGameController.cs" />
     <Compile Include="Assets\Code\Heaptester.cs" />
     <Compile Include="Assets\Code\Managers\GridManager.Points.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGeneratorUse.cs" />
+    <Compile Include="Assets\Code\Drawing\SmoothDrawTool.cs" />
     <Compile Include="Assets\Code\ItemIcon.cs" />
-    <Compile Include="Assets\Code\PlayerMotion.cs" />
+    <Compile Include="Assets\Code\Player\PlayerMotion.cs" />
     <Compile Include="Assets\Code\Managers\Procedural.SearchContext.cs" />
     <Compile Include="Assets\Code\Helpers.cs" />
+    <Compile Include="Assets\Code\Drawing\Slash.cs" />
     <Compile Include="Assets\Code\Cog.cs" />
     <Compile Include="Assets\Code\SurfaceObj.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorSpawner.cs" />
+    <Compile Include="Assets\Code\Drawing\Sketching.cs" />
     <Compile Include="Assets\Code\Hook.cs" />
     <Compile Include="Assets\Code\Heap.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeSweepCut.cs" />
     <Compile Include="Assets\Code\MaterialManager.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorRandomizer.cs" />
     <Compile Include="Assets\Code\SurfaceObjData.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RobotArmController.cs" />
+    <Compile Include="Assets\Code\Managers\ModeManager.cs" />
     <Compile Include="Assets\Code\NoControl.cs" />
-    <Compile Include="Assets\Code\Player.cs" />
+    <Compile Include="Assets\Code\Player\Player.cs" />
     <Compile Include="Assets\Code\Planet.cs" />
     <Compile Include="Assets\Code\Managers\GridManager.Cells.cs" />
     <Compile Include="Assets\Code\Camera\PlanetCamera.cs" />
-    <Compile Include="Assets\Code\Equipment.cs" />
+    <Compile Include="Assets\Code\Player\Equipment.cs" />
+    <Compile Include="Assets\Code\Drawing\V_LightMaker.cs" />
     <Compile Include="Assets\Code\Oscillator.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\Blinker.cs" />
     <Compile Include="Assets\Code\PointData.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTenser.cs" />
     <Compile Include="Assets\Code\Camera\CameraController.cs" />
+    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ExtrapolationCamera.cs" />
+    <Compile Include="Assets\Code\Hangtime.cs" />
+    <Compile Include="Assets\Code\SentenceMenuData.cs" />
     <Compile Include="Assets\Code\Inventory.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SnakeController.cs" />
+    <Compile Include="Assets\Code\Menu\WordData.cs" />
     <Compile Include="Assets\Code\Hoverable.cs" />
-    <Compile Include="Assets\Code\Grab.cs" />
+    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CharacterControl2D.cs" />
+    <Compile Include="Assets\Code\LauncherCam.cs" />
+    <Compile Include="Assets\Code\Player\Grab.cs" />
     <Compile Include="Assets\Code\Camera\CamTest.cs" />
     <Compile Include="Assets\Code\Placement.cs" />
     <Compile Include="Assets\Code\UI.cs" />
-    <Compile Include="Assets\Code\ColorChanger.cs" />
-    <Compile Include="Assets\Code\LauncherCam.cs" />
-    <Compile Include="Assets\Code\ControlLaunchCam.cs" />
-    <Compile Include="Assets\Code\Camera\AttachedCam.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ExtrapolationCamera.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorSpawner.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\AddRandomVelocity.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromVelocity.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\DebugParticleFrames.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CollisionEventHandler.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopeGameController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\FPSDisplay.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectDragger.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\SampleCharacterController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObjectLimit.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SnakeController.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGeneratorUse.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CharacterControl2D.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\Wrappable.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\CharacterController\ObiCharacter.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\Blinker.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeSweepCut.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\SpiralCurve.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\GrapplingHook.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\WrapRopePlayerController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiParticleCounter.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\LookAroundCamera.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTensionColorizer.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeNet.cs" />
     <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CursorController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ActorCOMTransform.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\SlowmoToggler.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorRandomizer.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\CraneController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\MoveAndRotate.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RopeTenser.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RuntimeRopeGenerator.cs" />
-    <Compile Include="Assets\Obi\Samples\RopeAndRod\SampleResources\Scripts\RobotArmController.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColorFromPhase.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ColliderHighlighter.cs" />
-    <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\ObiActorTeleport.cs" />
     <Compile Include="Assets\Obi\Samples\Common\SampleResources\Scripts\WorldSpaceGravity.cs" />
-    <Compile Include="Assets\Code\OrbSpawner.cs" />
-    <Compile Include="Assets\Code\Mathfx.cs" />
-    <Compile Include="Assets\Code\OrbWrapper.cs" />
-    <Compile Include="Assets\Code\Hangtime.cs" />
-    <Compile Include="Assets\Code\Drawing\V_LightMaker.cs" />
-    <Compile Include="Assets\Code\Drawing\SmoothDrawTool.cs" />
-    <Compile Include="Assets\Code\Drawing\BoxMaker.cs" />
-    <Compile Include="Assets\Code\Drawing\Slash.cs" />
-    <Compile Include="Assets\Code\Drawing\Sketching.cs" />
-    <Compile Include="Assets\Code\Drawing\ISketchMode.cs" />
-    <Compile Include="Assets\Code\Drawing\FloatingPlatform.cs" />
-    <Compile Include="Assets\Code\Gear.cs" />
-    <Compile Include="Assets\Code\PlayerInput.cs" />
-    <Compile Include="Assets\Code\Drawing\PlatformGrid.cs" />
-    <Compile Include="Assets\Code\Managers\ModeManager.cs" />
-    <Compile Include="Assets\Code\SentenceMenu.cs" />
-    <Compile Include="Assets\Code\MenuDisplay.cs" />
-    <Compile Include="Assets\Code\MenuItem.cs" />
+    <Compile Include="Assets\Code\ColorChanger.cs" />
+    <Compile Include="Assets\Code\Menu\WordButton.cs" />
+    <Compile Include="Assets\Code\UI_Hover.cs" />
+    <Compile Include="Assets\Code\Menu\FadeOutAppearance.cs" />
+    <Compile Include="Assets\Code\SMSettings.cs" />
+    <Compile Include="Assets\Code\Menu\ColorBehavior.cs" />
+    <Compile Include="Assets\Code\Menu\FadeToColorAppearance.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ParticleShader.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\URP\ObiLightingURP.cginc" />
     <None Include="Assets\Obi\Plugins\x86_64\libOni.dll" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiLightingBuiltIn.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Code\Fresnel.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\DistanceFieldSlice.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiParticles.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\StandardVertexColors.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\SimpleParticleShader.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiEllipsoids.cginc" />
     <None Include="Assets\Obi\Resources\ObiMaterials\URP\ParticleShaderURP.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\URP\SimpleParticleShaderURP.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Obi\Resources\ObiMaterials\ObiUtils.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -436,6 +463,9 @@
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.4.8\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
@@ -456,9 +486,6 @@
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.burst@1.4.8\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.4f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -832,17 +859,20 @@
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="VSSettingsProvider">
-      <HintPath>Library\ScriptAssemblies\VSSettingsProvider.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="VSSettingsProvider">
+      <HintPath>Library\ScriptAssemblies\VSSettingsProvider.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
@@ -868,17 +898,20 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
@@ -889,14 +922,16 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{933821DC-55F5-D76D-0401-9FDAF458DBF5}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="Obi.csproj">
+      <Project>{EF4C948B-B59F-9A7E-424B-636874E2590C}</Project>
+      <Name>Obi</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{6484D574-2612-5B97-50D9-6348DEBF6C69}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
@@ -908,10 +943,6 @@
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{B230D2DB-6490-1270-558A-8112A58553F7}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Obi.csproj">
-      <Project>{EF4C948B-B59F-9A7E-424B-636874E2590C}</Project>
-      <Name>Obi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

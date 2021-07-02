@@ -15,11 +15,15 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     UnityBoolEvent onChangeActive;
     [SerializeField]
+    UnityEvent onStart;
+    [SerializeField]
     bool _isActive = false;
     public bool IsActive {
         get => _isActive;
         set {
             _isActive = value;
+            if (_isActive)
+                onStart?.Invoke();
             onChangeActive?.Invoke(value);
         }
     }
@@ -49,7 +53,7 @@ public class PlayerInput : MonoBehaviour
                 press.ThingToDo?.Invoke();
         });
     }
-    private void Awake()
+    private void Start()
     {
         IsActive = startActive;
     }

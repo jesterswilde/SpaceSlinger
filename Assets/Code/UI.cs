@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class UI : SerializedMonoBehaviour
 {
+    static UI t;
     [SerializeField]
     Dictionary<ItemType, ItemIcon> icons = new Dictionary<ItemType, ItemIcon>();
+    [SerializeField]
+    Canvas canvas;
+    static Canvas defaultCanvas;
+    public static Canvas Canvas { get {
+            if (t != null)
+                return t.canvas;
+            defaultCanvas ??= FindObjectOfType<Canvas>();
+            return defaultCanvas;
+        } }
 
     void ItemPickedUp(Item item)
     {
@@ -16,5 +26,9 @@ public class UI : SerializedMonoBehaviour
     private void Start()
     {
         Player.Inventory.OnItemAdded += ItemPickedUp;
+    }
+    private void Awake()
+    {
+        t = this;
     }
 }
